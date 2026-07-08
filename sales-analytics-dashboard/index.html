@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Analytics Dashboard | Atif</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <section class="hero">
+    <div class="badge">Portfolio Project • Tableau + SQL + BI Reporting</div>
+    <h1>Sales Analytics Dashboard</h1>
+    <p>Interactive executive dashboard for sales performance, KPI tracking, regional analysis, customer segment insights, and profit optimization. Built as a recruiter-ready analytics portfolio project.</p>
+    <div class="links">
+      <a class="btn" href="data/sales_data.csv" download>Download Dataset</a>
+      <a class="btn secondary" href="sql/sales_analysis_queries.sql" download>Download SQL Queries</a>
+      <a class="btn secondary" href="README.md">Project README</a>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <div class="controls">
+      <div class="control"><label>Region</label><select id="regionFilter"><option value="All">All Regions</option></select></div>
+      <div class="control"><label>Category</label><select id="categoryFilter"><option value="All">All Categories</option></select></div>
+      <div class="control"><label>Customer Segment</label><select id="segmentFilter"><option value="All">All Segments</option></select></div>
+    </div>
+
+    <section class="grid">
+      <div class="card"><span>Total Revenue</span><strong id="salesKpi">$0</strong><small>Executive KPI</small></div>
+      <div class="card"><span>Total Profit</span><strong id="profitKpi">$0</strong><small>Profitability</small></div>
+      <div class="card"><span>Total Orders</span><strong id="ordersKpi">0</strong><small>Sales Volume</small></div>
+      <div class="card"><span>Avg Order Value</span><strong id="aovKpi">$0</strong><small>Customer Value</small></div>
+      <div class="card"><span>Profit Margin</span><strong id="marginKpi">0%</strong><small>Efficiency</small></div>
+    </section>
+
+    <section class="charts">
+      <div class="chart wide" id="monthlyTrend"></div>
+      <div class="chart" id="regionChart"></div>
+      <div class="chart" id="categoryChart"></div>
+      <div class="chart" id="segmentChart"></div>
+      <div class="chart" id="cityChart"></div>
+    </section>
+
+    <h2 class="section-title">Executive Insights</h2>
+    <section class="insights">
+      <div class="insight"><h3>Revenue Growth</h3><p>Monthly sales tracking helps leadership identify seasonal patterns and revenue acceleration opportunities.</p></div>
+      <div class="insight"><h3>Regional Analysis</h3><p>Region-level comparisons highlight high-performing markets and underperforming areas requiring strategic action.</p></div>
+      <div class="insight"><h3>Profit Optimization</h3><p>Category and discount analysis reveals where margin leakage occurs and where pricing should be improved.</p></div>
+      <div class="insight"><h3>Customer Segments</h3><p>Segment analysis supports targeted campaigns for Consumer, Corporate, and Home Office customers.</p></div>
+    </section>
+  </main>
+
+  <footer class="footer">Created by Atif • Data Analytics Portfolio • GitHub Pages Ready</footer>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

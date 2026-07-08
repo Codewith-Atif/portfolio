@@ -1,0 +1,19 @@
+:root {
+  --bg: #07111f;
+  --panel: #0f1b2d;
+  --panel2: #12243a;
+  --text: #eef5ff;
+  --muted: #99aac2;
+  --accent: #4fd1c5;
+  --accent2: #7c3aed;
+  --line: rgba(255,255,255,.1);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at top left,#12365a 0,#07111f 38%,#030812 100%);color:var(--text)}
+.hero{padding:42px 7vw 24px;border-bottom:1px solid var(--line)}
+.badge{display:inline-block;background:rgba(79,209,197,.12);color:var(--accent);padding:8px 14px;border:1px solid rgba(79,209,197,.25);border-radius:999px;font-size:13px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,58px);margin:0 0 12px;letter-spacing:-.04em}.hero p{color:var(--muted);max-width:850px;font-size:18px;line-height:1.7}.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.btn{color:#06101e;background:var(--accent);text-decoration:none;padding:12px 18px;border-radius:12px;font-weight:700}.btn.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}
+.wrap{padding:28px 7vw 60px}.controls,.grid,.charts,.insights{display:grid;gap:18px}.controls{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));margin-bottom:20px}.control,.card,.chart,.insight{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.22)}.control{padding:16px}.control label{display:block;color:var(--muted);font-size:13px;margin-bottom:8px}select{width:100%;padding:12px;border-radius:12px;background:#0b1626;color:var(--text);border:1px solid var(--line)}
+.grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-bottom:20px}.card{padding:20px}.card span{color:var(--muted);font-size:13px}.card strong{display:block;font-size:28px;margin-top:8px}.card small{color:var(--accent)}
+.charts{grid-template-columns:repeat(auto-fit,minmax(360px,1fr))}.chart{padding:14px;min-height:390px}.chart.wide{grid-column:1/-1}.section-title{font-size:24px;margin:34px 0 16px}.insights{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.insight{padding:20px}.insight h3{margin-top:0}.insight p{color:var(--muted);line-height:1.6}.footer{padding:25px 7vw;color:var(--muted);border-top:1px solid var(--line)}
+@media(max-width:760px){.charts{grid-template-columns:1fr}.hero,.wrap,.footer{padding-left:20px;padding-right:20px}}
