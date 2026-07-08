@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Commerce Analytics Dashboard | Mohd Atif</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <header class="dashboard-header">
+    <div>
+      <span class="badge">Portfolio Project • E-Commerce BI</span>
+      <h1>E-Commerce Analytics Dashboard</h1>
+      <p>Interactive business dashboard for online sales, revenue, profit, customer behavior, product performance, return analysis and executive reporting.</p>
+    </div>
+    <div class="header-actions">
+      <a class="btn" href="data/ecommerce_data.csv" download>Download Dataset</a>
+      <a class="btn secondary" href="sql/ecommerce_queries.sql" download>SQL Queries</a>
+      <a class="btn secondary" href="README.md">README</a>
+      <a class="btn secondary" href="../index.html">Back to Portfolio</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="summary-panel">
+      <div>
+        <h2>Executive Summary</h2>
+        <p>This dashboard helps e-commerce leadership monitor revenue, profit, order volume, product categories, customer segments, payment behavior and operational returns using interactive filters.</p>
+      </div>
+      <div class="summary-meta">
+        <span>Domain: E-Commerce Analytics</span>
+        <span>Tools: HTML, CSS, JavaScript, Plotly, SQL</span>
+        <span>Status: Live Interactive Dashboard</span>
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="control"><label>Region</label><select id="regionFilter"><option value="All">All Regions</option></select></div>
+      <div class="control"><label>Category</label><select id="categoryFilter"><option value="All">All Categories</option></select></div>
+      <div class="control"><label>Customer Segment</label><select id="segmentFilter"><option value="All">All Segments</option></select></div>
+      <div class="control"><label>Channel</label><select id="channelFilter"><option value="All">All Channels</option></select></div>
+    </section>
+
+    <section class="grid">
+      <div class="card"><span>Total Revenue</span><strong id="revenueKpi">$0</strong><small>Gross sales</small></div>
+      <div class="card"><span>Total Profit</span><strong id="profitKpi">$0</strong><small>Business margin</small></div>
+      <div class="card"><span>Total Orders</span><strong id="ordersKpi">0</strong><small>Order volume</small></div>
+      <div class="card"><span>Avg Order Value</span><strong id="aovKpi">$0</strong><small>Customer basket</small></div>
+      <div class="card"><span>Return Rate</span><strong id="returnKpi">0%</strong><small>Operational quality</small></div>
+      <div class="card"><span>Profit Margin</span><strong id="marginKpi">0%</strong><small>Revenue efficiency</small></div>
+    </section>
+
+    <section class="charts">
+      <div class="chart wide"><h3>Monthly Revenue Trend</h3><div id="monthlyRevenue"></div></div>
+      <div class="chart"><h3>Revenue by Category</h3><div id="categoryChart"></div></div>
+      <div class="chart"><h3>Regional Sales Performance</h3><div id="regionChart"></div></div>
+      <div class="chart"><h3>Customer Segment Analysis</h3><div id="segmentChart"></div></div>
+      <div class="chart"><h3>Top Products by Revenue</h3><div id="productChart"></div></div>
+      <div class="chart"><h3>Payment Method Distribution</h3><div id="paymentChart"></div></div>
+    </section>
+
+    <section class="insight-section">
+      <h2>Executive Insights</h2>
+      <div class="insights">
+        <div class="insight"><h3>Revenue Growth</h3><p>Monthly sales trends highlight seasonal demand and performance acceleration opportunities.</p></div>
+        <div class="insight"><h3>Product Strategy</h3><p>Category and product analytics identify top revenue drivers and low-margin areas.</p></div>
+        <div class="insight"><h3>Customer Behavior</h3><p>Segment analysis helps target returning and premium customers with focused campaigns.</p></div>
+        <div class="insight"><h3>Operations</h3><p>Return rate and shipping metrics support quality improvement and cost-control decisions.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Created by Mohd Atif • E-Commerce Analytics Portfolio Project</footer>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
