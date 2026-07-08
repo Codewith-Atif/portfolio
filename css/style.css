@@ -388,14 +388,14 @@ color:#3B82F6;
 
 }
 
-.project-card p{
+.project-card{
+    background:#1E293B;
+    padding:35px;
+    border-radius:18px;
+    transition:.35s;
 
-color:#CBD5E1;
-
-line-height:1.8;
-
-margin-bottom:30px;
-
+    display:flex;
+    flex-direction:column;
 }
 
 @media(max-width:900px){
@@ -635,4 +635,25 @@ color:#CBD5E1;
 
 .project-title-link:hover{
     color:#60A5FA;
+}
+
+/* ===== Project Buttons ===== */
+
+.project-actions{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-top:auto;
+    flex-wrap:wrap;
+}
+
+.project-actions .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
+
+.project-actions .primary{
+    min-width:170px;
 }
