@@ -17,3 +17,75 @@ h1{font-size:clamp(30px,5vw,58px);margin:0 0 12px;letter-spacing:-.04em}.hero p{
 .grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-bottom:20px}.card{padding:20px}.card span{color:var(--muted);font-size:13px}.card strong{display:block;font-size:28px;margin-top:8px}.card small{color:var(--accent)}
 .charts{grid-template-columns:repeat(auto-fit,minmax(360px,1fr))}.chart{padding:14px;min-height:390px}.chart.wide{grid-column:1/-1}.section-title{font-size:24px;margin:34px 0 16px}.insights{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.insight{padding:20px}.insight h3{margin-top:0}.insight p{color:var(--muted);line-height:1.6}.footer{padding:25px 7vw;color:var(--muted);border-top:1px solid var(--line)}
 @media(max-width:760px){.charts{grid-template-columns:1fr}.hero,.wrap,.footer{padding-left:20px;padding-right:20px}}
+
+/* Premium dashboard polish */
+
+.hero{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  min-height:360px;
+}
+
+.hero h1{
+  line-height:1.05;
+}
+
+.links .btn{
+  transition:.25s ease;
+}
+
+.links .btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 35px rgba(79,209,197,.18);
+}
+
+.control,
+.card,
+.chart,
+.insight{
+  backdrop-filter:blur(14px);
+}
+
+.card{
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+}
+
+.card strong{
+  color:#ffffff;
+  letter-spacing:-.03em;
+}
+
+.chart{
+  padding:20px;
+}
+
+.chart h3{
+  margin:0 0 12px;
+  color:#ffffff;
+  font-size:18px;
+}
+
+.insight{
+  transition:.25s ease;
+}
+
+.insight:hover{
+  transform:translateY(-5px);
+  border-color:rgba(79,209,197,.35);
+}
+
+.footer{
+  text-align:center;
+}
