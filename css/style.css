@@ -352,15 +352,10 @@ padding:100px 0;
 }
 
 .project-grid{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:30px;
-
-margin-top:50px;
-
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:30px;
+    margin-top:50px;
 }
 
 .project-card{
