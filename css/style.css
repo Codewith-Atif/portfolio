@@ -632,3 +632,12 @@ color:#CBD5E1;
 .project-card:hover .project-image{
     transform:scale(1.02);
 }
+
+.project-title-link{
+    color:#3B82F6;
+    text-decoration:none;
+}
+
+.project-title-link:hover{
+    color:#60A5FA;
+}
