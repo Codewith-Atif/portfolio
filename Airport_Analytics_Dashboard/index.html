@@ -18,20 +18,22 @@
 <body>
 
 
-<!-- NAVBAR -->
-
 <header>
 
-<div class="nav">
+<div class="navbar">
 
 <h2>
-✈️ Airport Analytics Dashboard
+✈ Airport Analytics
 </h2>
 
 
+<div>
+
 <button id="themeToggle">
-☀️
+🌙
 </button>
+
+</div>
 
 
 </div>
@@ -45,9 +47,14 @@
 
 
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 
 <section class="hero">
+
+
+<div class="badge">
+AIRPORT OPERATIONS INTELLIGENCE
+</div>
 
 
 <h1>
@@ -56,32 +63,57 @@ Airport Analytics Dashboard
 
 
 <p>
-Interactive Business Intelligence dashboard analyzing airport operations,
-passenger flow, airline performance and flight delays.
+Real-time analytics dashboard for passenger flow,
+flight operations, airline performance and delay monitoring.
 </p>
-
 
 
 <img 
 src="https://raw.githubusercontent.com/Codewith-Atif/portfolio/main/Airport_Analytics_Dashboard/assets/images/airport-dashboard-preview.png"
-class="dashboard-image"
-alt="Airport Analytics Dashboard"
+class="dashboard-preview"
 >
 
 
-
-<div class="buttons">
-
-<a href="../index.html" class="btn">
-Back Portfolio
-</a>
+</section>
 
 
-<a href="https://github.com/Codewith-Atif/portfolio/tree/main/Airport_Analytics_Dashboard"
-target="_blank"
-class="btn">
-GitHub Code
-</a>
+
+
+
+
+<!-- FILTER PANEL -->
+
+
+<section class="panel">
+
+
+<h2>
+Dashboard Filters
+</h2>
+
+
+<div class="filters">
+
+
+<div>
+<label>Date Range</label>
+<p>Apr 1 - Apr 30, 2024</p>
+</div>
+
+
+
+<div>
+<label>Airport</label>
+<p>All Airports</p>
+</div>
+
+
+
+<div>
+<label>Airline</label>
+<p>All Airlines</p>
+</div>
+
 
 
 </div>
@@ -95,16 +127,16 @@ GitHub Code
 
 
 
-<!-- KPI CARDS -->
+<!-- KPI -->
 
 
-<section class="cards">
+<section class="kpis">
 
 
-<div class="card">
+<div class="kpi">
 
 <h3>
-50K+
+50.2K
 </h3>
 
 <p>
@@ -115,10 +147,10 @@ Total Passengers
 
 
 
-<div class="card">
+<div class="kpi">
 
 <h3>
-500+
+512
 </h3>
 
 <p>
@@ -130,7 +162,7 @@ Total Flights
 
 
 
-<div class="card">
+<div class="kpi">
 
 <h3>
 18 min
@@ -145,10 +177,10 @@ Average Delay
 
 
 
-<div class="card">
+<div class="kpi">
 
 <h3>
-15+
+15
 </h3>
 
 <p>
@@ -166,28 +198,121 @@ Active Airlines
 
 
 
-<!-- TECHNOLOGY -->
+<!-- ANALYTICS -->
 
 
-<section class="box">
+<section class="dashboard-grid">
 
 
-<h2>
-Technology Stack
-</h2>
+
+<div class="chart">
+
+<h3>
+Passenger Traffic Trend
+</h3>
+
+<div class="line-chart"></div>
 
 
-<div class="tags">
+</div>
 
-<span>Python</span>
 
-<span>SQL</span>
 
-<span>Tableau</span>
 
-<span>Power BI</span>
+<div class="chart">
 
-<span>Excel</span>
+<h3>
+Flight Status
+</h3>
+
+<div class="circle-chart">
+62%
+</div>
+
+
+</div>
+
+
+
+
+<div class="chart">
+
+<h3>
+Top Airlines
+</h3>
+
+
+<div class="bars">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="chart">
+
+<h3>
+Passenger Distribution
+</h3>
+
+<div class="circle-chart small">
+72%
+</div>
+
+
+</div>
+
+
+
+
+<div class="chart">
+
+<h3>
+Average Delay Analysis
+</h3>
+
+
+<div class="bar-chart">
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="chart">
+
+<h3>
+Delay Reasons
+</h3>
+
+
+<ul>
+
+<li>Weather 35%</li>
+<li>Air Traffic 30%</li>
+<li>Technical 20%</li>
+<li>Other 15%</li>
+
+
+</ul>
 
 
 </div>
@@ -201,47 +326,10 @@ Technology Stack
 
 
 
-
-<!-- FEATURES -->
-
-
-<section class="box">
-
-
-<h2>
-Dashboard Features
-</h2>
-
-
-<ul>
-
-<li>Passenger traffic trend analysis</li>
-
-<li>Flight delay monitoring</li>
-
-<li>Airline performance comparison</li>
-
-<li>Operational KPI reporting</li>
-
-<li>Interactive drill-down analytics</li>
-
-
-</ul>
-
-
-</section>
-
-
-
-
-
-
-
-
 <!-- INSIGHTS -->
 
 
-<section class="box">
+<section class="panel">
 
 
 <h2>
@@ -255,11 +343,11 @@ Business Insights
 <div>
 
 <h3>
-Passenger Trends
+Passenger Growth
 </h3>
 
 <p>
-Analyze demand patterns, peak travel periods and passenger growth.
+Identified peak travel periods and passenger demand trends.
 </p>
 
 </div>
@@ -269,11 +357,11 @@ Analyze demand patterns, peak travel periods and passenger growth.
 <div>
 
 <h3>
-Flight Operations
+Operational Efficiency
 </h3>
 
 <p>
-Monitor delays and improve airport operational efficiency.
+Analyzed delays and flight performance metrics.
 </p>
 
 </div>
@@ -283,11 +371,11 @@ Monitor delays and improve airport operational efficiency.
 <div>
 
 <h3>
-Airline Analysis
+Airline Performance
 </h3>
 
 <p>
-Compare airline performance and route contribution.
+Compared airline contribution and route efficiency.
 </p>
 
 </div>
@@ -299,105 +387,10 @@ Compare airline performance and route contribution.
 </section>
 
 
-
-
-
-
-
-
-<!-- HIGHLIGHTS -->
-
-
-<section class="box">
-
-
-<h2>
-Dashboard Highlights
-</h2>
-
-
-
-<div class="insights">
-
-
-<div>
-
-<h3>
-✈️ Flight Monitoring
-</h3>
-
-<p>
-Track flight status, delays and operational performance.
-</p>
-
-</div>
-
-
-
-<div>
-
-<h3>
-👥 Passenger Flow
-</h3>
-
-<p>
-Understand passenger movement and traffic distribution.
-</p>
-
-</div>
-
-
-
-<div>
-
-<h3>
-🏢 Airline Intelligence
-</h3>
-
-<p>
-Analyze airline efficiency and route performance.
-</p>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- WORKFLOW -->
-
-
-<section class="box">
-
-
-<h2>
-Project Workflow
-</h2>
-
-
-<p class="workflow">
-
-Dataset → Python Cleaning → SQL Analysis → Tableau / Power BI Dashboard
-
-</p>
-
-
-</section>
 
 
 
 </main>
-
-
 
 
 
