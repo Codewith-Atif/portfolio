@@ -414,11 +414,8 @@ box-shadow:
 
 
 .kpi .icon{
-
-font-size:32px;
-
-margin-bottom:15px;
-
+    filter: grayscale(1);
+    opacity:0.9;
 }
 
 
@@ -543,32 +540,54 @@ margin-bottom:25px;
 
 height:170px;
 
-border-radius:18px;
-
-background:
-
-linear-gradient(
-180deg,
-rgba(212,175,55,.35),
-transparent
-),
-
-repeating-linear-gradient(
-90deg,
-transparent,
-transparent 40px,
-rgba(255,255,255,.05) 41px
-);
-
-
-border-bottom:2px solid #D4AF37;
+border-radius:15px;
 
 position:relative;
 
 overflow:hidden;
 
+
+background:
+
+linear-gradient(
+180deg,
+rgba(212,175,55,.25),
+transparent
+);
+
+
+border-bottom:2px solid #D4AF37;
+
 }
 
+
+
+.line-chart::before{
+
+content:"";
+
+position:absolute;
+
+left:20px;
+
+bottom:40px;
+
+width:90%;
+
+height:3px;
+
+background:#D4AF37;
+
+transform:rotate(-5deg);
+
+box-shadow:
+
+60px -15px 0 #D4AF37,
+120px 10px 0 #D4AF37,
+190px -25px 0 #D4AF37,
+270px 15px 0 #D4AF37;
+
+}
 
 .line-chart::after{
 
@@ -682,11 +701,19 @@ display:block;
 
 height:20px;
 
-margin:15px 0;
-
-background:var(--gold);
+margin:18px 0;
 
 border-radius:10px;
+
+
+background:
+
+linear-gradient(
+90deg,
+#D4AF37,
+#8b6508
+);
+
 
 }
 
@@ -1019,5 +1046,17 @@ gap:10px;
 
 }
 
+
+}
+
+.chart:hover,
+.kpi:hover,
+.panel:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#D4AF37;
+
+    transition:.3s;
 
 }
