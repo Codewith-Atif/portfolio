@@ -1049,6 +1049,19 @@ gap:10px;
 
 }
 
+/* CARD TRANSITION */
+
+.chart,
+.kpi,
+.panel{
+
+    transition:.3s;
+
+}
+
+
+/* CARD HOVER EFFECT */
+
 .chart:hover,
 .kpi:hover,
 .panel:hover{
@@ -1057,6 +1070,6 @@ gap:10px;
 
     border-color:#D4AF37;
 
-    transition:.3s;
+}
 
 }
