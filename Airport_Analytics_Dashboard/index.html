@@ -10,21 +10,43 @@
 
 <link rel="stylesheet" href="style.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 
 <body>
 
 
-<div class="container">
+<header>
+
+<div class="nav">
+
+<h2>
+✈️ Airport Analytics
+</h2>
 
 
-<!-- HERO -->
+<button id="themeToggle">
+☀️
+</button>
 
-<div class="hero">
+
+</div>
+
+</header>
+
+
+
+
+<main class="container">
+
+
+<section class="hero">
+
 
 <h1>
-✈️ Airport Analytics Dashboard
+Airport Analytics Dashboard
 </h1>
 
 
@@ -34,83 +56,102 @@ passenger flow, airline performance and flight delays.
 </p>
 
 
-<img src="https://raw.githubusercontent.com/Codewith-Atif/portfolio/main/Airport_Analytics_Dashboard/assets/images/airport-dashboard-preview.png"
+
+<img 
+src="https://raw.githubusercontent.com/Codewith-Atif/portfolio/main/Airport_Analytics_Dashboard/assets/images/airport-dashboard-preview.png"
 class="dashboard-image"
-alt="Airport Analytics Dashboard">
+>
+
 
 
 <div class="buttons">
 
-<a class="btn"
-href="../index.html">
+<a href="../index.html" class="btn">
 Back Portfolio
 </a>
 
 
-<a class="btn"
-href="https://github.com/Codewith-Atif/portfolio/tree/main/Airport_Analytics_Dashboard"
-target="_blank">
+<a href="https://github.com/Codewith-Atif/portfolio/tree/main/Airport_Analytics_Dashboard"
+class="btn">
 GitHub Code
 </a>
 
 
 </div>
 
-</div>
+
+</section>
 
 
 
 
 
-<!-- KEY METRICS -->
-
-<div class="section">
-
-<h2>
-Key Metrics
-</h2>
+<section class="cards">
 
 
-<div class="grid">
+<div class="card">
 
+<h3>
+50K+
+</h3>
 
-<div class="metric">
-<h3>50K+</h3>
-<p>Total Passengers</p>
-</div>
-
-
-<div class="metric">
-<h3>500+</h3>
-<p>Total Flights</p>
-</div>
-
-
-<div class="metric">
-<h3>18 min</h3>
-<p>Average Delay</p>
-</div>
-
-
-<div class="metric">
-<h3>15+</h3>
-<p>Airlines</p>
-</div>
-
+<p>
+Passengers
+</p>
 
 </div>
+
+
+<div class="card">
+
+<h3>
+500+
+</h3>
+
+<p>
+Flights
+</p>
 
 </div>
 
 
 
+<div class="card">
+
+<h3>
+18 min
+</h3>
+
+<p>
+Average Delay
+</p>
+
+</div>
 
 
 
-<!-- TECHNOLOGY -->
+
+<div class="card">
+
+<h3>
+15+
+</h3>
+
+<p>
+Airlines
+</p>
+
+</div>
 
 
-<div class="section">
+</section>
+
+
+
+
+
+
+<section class="box">
 
 <h2>
 Technology Stack
@@ -125,20 +166,16 @@ Technology Stack
 <span>Power BI</span>
 <span>Excel</span>
 
-</div>
-
 
 </div>
 
+</section>
 
 
 
 
 
-<!-- FEATURES -->
-
-
-<div class="section">
+<section class="box">
 
 <h2>
 Dashboard Features
@@ -149,9 +186,9 @@ Dashboard Features
 
 <li>Passenger traffic analysis</li>
 
-<li>Airline performance monitoring</li>
+<li>Flight delay monitoring</li>
 
-<li>Flight delay analysis</li>
+<li>Airline performance tracking</li>
 
 <li>Operational KPI reporting</li>
 
@@ -161,125 +198,68 @@ Dashboard Features
 </ul>
 
 
-</div>
+</section>
 
 
 
 
 
+<section class="box">
 
-<!-- INSIGHTS -->
-
-
-<div class="section">
 
 <h2>
 Business Insights
 </h2>
 
 
-<div class="insight-box">
+<div class="insights">
 
 
+<div>
 <h3>
-Passenger Analytics
+Passenger Trends
 </h3>
-
 <p>
-Analyze passenger trends, peak travel periods and airport traffic patterns.
+Analyze demand patterns and peak travel periods.
 </p>
-
-<div class="section">
-
-<h2>Dashboard Highlights</h2>
-
-<div class="highlight-grid">
-
-
-<div class="highlight">
-
-<h3>✈️ Flight Monitoring</h3>
-
-<p>
-Track flight status, delays and operational performance.
-</p>
-
-</div>
-
-
-<div class="highlight">
-
-<h3>👥 Passenger Flow</h3>
-
-<p>
-Analyze passenger traffic patterns and travel demand.
-</p>
-
-</div>
-
-
-<div class="highlight">
-
-<h3>🏢 Airline Analytics</h3>
-
-<p>
-Compare airline contribution, routes and service performance.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-  
 </div>
 
 
 
-<div class="insight-box">
-
+<div>
 <h3>
 Flight Operations
 </h3>
+<p>
+Monitor delays and improve efficiency.
+</p>
+</div>
+
+
+
+<div>
+<h3>
+Airline Analysis
+</h3>
 
 <p>
-Monitor delays, operational efficiency and airline performance.
+Compare airline performance and routes.
 </p>
 
-
 </div>
-
-
-
-</div>
-
-
-
-
-
-<!-- WORKFLOW -->
-
-
-<div class="section">
-
-<h2>
-Project Workflow
-</h2>
-
-
-<p class="workflow">
-
-Dataset → Python Cleaning → SQL Analysis → Tableau / Power BI Dashboard
-
-</p>
 
 
 </div>
 
 
+</section>
 
-</div>
+
+
+</main>
+
+
+<script src="script.js"></script>
 
 
 </body>
