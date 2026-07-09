@@ -570,7 +570,7 @@ position:absolute;
 
 left:20px;
 
-bottom:40px;
+bottom:45px;
 
 width:90%;
 
@@ -578,14 +578,15 @@ height:3px;
 
 background:#D4AF37;
 
-transform:rotate(-5deg);
+transform:
+rotate(-6deg);
 
 box-shadow:
 
-60px -15px 0 #D4AF37,
-120px 10px 0 #D4AF37,
-190px -25px 0 #D4AF37,
-270px 15px 0 #D4AF37;
+50px 10px 0 #D4AF37,
+100px -15px 0 #D4AF37,
+160px 20px 0 #D4AF37,
+230px -25px 0 #D4AF37;
 
 }
 
@@ -952,7 +953,13 @@ color:var(--gold);
 
 .kpi .icon{
 
-font-size:35px;
+font-size:38px;
+
+filter:
+grayscale(1)
+sepia(1)
+hue-rotate(5deg)
+saturate(5);
 
 margin-bottom:15px;
 
