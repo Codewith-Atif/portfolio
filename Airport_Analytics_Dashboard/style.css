@@ -1,7 +1,6 @@
-/* =====================
-   ROOT VARIABLES
-===================== */
-
+/* =========================
+   ROOT COLORS
+========================= */
 
 :root{
 
@@ -18,7 +17,6 @@
 --border:rgba(212,175,55,.25);
 
 }
-
 
 
 
@@ -43,10 +41,9 @@
 
 
 
-/* =====================
+/* =========================
  RESET
-===================== */
-
+========================= */
 
 *{
 
@@ -73,20 +70,20 @@ transition:.4s;
 
 
 
-
-/* =====================
+/* =========================
  NAVBAR
-===================== */
+========================= */
 
 
 header{
 
 position:sticky;
+
 top:0;
 
 z-index:100;
 
-background:rgba(0,0,0,.6);
+background:rgba(0,0,0,.75);
 
 backdrop-filter:blur(15px);
 
@@ -122,13 +119,47 @@ color:var(--gold);
 
 
 
+.nav-links{
+
+display:flex;
+
+align-items:center;
+
+gap:25px;
+
+}
+
+
+
+.nav-links a{
+
+color:var(--text);
+
+text-decoration:none;
+
+font-size:14px;
+
+}
+
+
+
+.nav-links a:hover{
+
+color:var(--gold);
+
+}
+
+
+
 #themeToggle{
 
 background:var(--gold);
 
 border:none;
 
-padding:10px 14px;
+width:42px;
+
+height:42px;
 
 border-radius:50%;
 
@@ -142,11 +173,9 @@ font-size:18px;
 
 
 
-
-
-/* =====================
+/* =========================
  CONTAINER
-===================== */
+========================= */
 
 
 .container{
@@ -163,9 +192,9 @@ margin:auto;
 
 
 
-/* =====================
+/* =========================
  HERO
-===================== */
+========================= */
 
 
 .hero{
@@ -182,15 +211,13 @@ padding:70px 0;
 
 display:inline-block;
 
-background:rgba(212,175,55,.15);
+padding:8px 20px;
+
+border-radius:30px;
 
 border:1px solid var(--gold);
 
 color:var(--gold);
-
-padding:8px 20px;
-
-border-radius:30px;
 
 font-size:13px;
 
@@ -214,7 +241,7 @@ margin-bottom:20px;
 
 .hero p{
 
-max-width:800px;
+max-width:850px;
 
 margin:auto;
 
@@ -230,10 +257,23 @@ line-height:1.8;
 
 .dashboard-preview{
 
-width:85%;
-max-width:1050px;
+width:90%;
 
-margin:40px auto;
+max-width:1150px;
+
+margin:50px auto;
+
+display:block;
+
+border-radius:25px;
+
+border:1px solid var(--border);
+
+box-shadow:
+
+0 20px 70px rgba(212,175,55,.25);
+
+transition:.4s;
 
 }
 
@@ -250,23 +290,24 @@ transform:scale(1.02);
 
 
 
-
-/* =====================
+/* =========================
  PANELS
-===================== */
+========================= */
 
 
 .panel{
 
 background:var(--card);
 
-border:1px solid var(--border);
-
 padding:35px;
 
 border-radius:25px;
 
-margin:30px 0;
+margin:35px 0;
+
+border:1px solid var(--border);
+
+transition:.3s;
 
 }
 
@@ -284,11 +325,9 @@ margin-bottom:25px;
 
 
 
-
-
-/* =====================
+/* =========================
  FILTERS
-===================== */
+========================= */
 
 
 .filters{
@@ -307,7 +346,7 @@ gap:20px;
 
 background:var(--card2);
 
-padding:20px;
+padding:22px;
 
 border-radius:15px;
 
@@ -316,6 +355,7 @@ border:1px solid var(--border);
 position:relative;
 
 }
+
 
 
 .filters div::after{
@@ -328,11 +368,11 @@ right:20px;
 
 top:35px;
 
-color:#D4AF37;
-
-font-size:18px;
+color:var(--gold);
 
 }
+
+
 
 .filters label{
 
@@ -357,9 +397,9 @@ color:var(--text);
 
 
 
-/* =====================
- KPI
-===================== */
+/* =========================
+ KPI CARDS
+========================= */
 
 
 .kpis{
@@ -370,7 +410,7 @@ grid-template-columns:repeat(4,1fr);
 
 gap:25px;
 
-margin:35px 0;
+margin:40px 0;
 
 }
 
@@ -378,53 +418,55 @@ margin:35px 0;
 
 .kpi{
 
-background:
-linear-gradient(
+background:linear-gradient(
+
 145deg,
+
 #191919,
+
 #101010
+
 );
 
-padding:35px 25px;
+padding:35px;
 
 border-radius:22px;
 
 text-align:center;
 
-border:1px solid rgba(212,175,55,.35);
+border:1px solid var(--border);
 
-position:relative;
-
-overflow:hidden;
-
-transition:.35s;
+transition:.3s;
 
 }
+
 
 
 .kpi:hover{
 
 transform:translateY(-8px);
 
-box-shadow:
-0 20px 50px rgba(212,175,55,.18);
+border-color:var(--gold);
 
 }
 
 
 
-.kpi .icon{
-    filter: grayscale(1);
-    opacity:0.9;
+.icon{
+
+font-size:35px;
+
+margin-bottom:15px;
+
 }
 
 
 
 .kpi h3{
 
-font-size:48px;
+font-size:50px;
 
-color:#D4AF37;
+color:var(--gold);
 
 margin-bottom:10px;
 
@@ -434,9 +476,7 @@ margin-bottom:10px;
 
 .kpi p{
 
-color:#CBD5E1;
-
-font-size:15px;
+color:var(--muted);
 
 }
 
@@ -456,40 +496,13 @@ color:#22c55e;
 
 
 
-.kpi:hover{
-
-transform:translateY(-8px);
-
-}
-
-
-
-.kpi h3{
-
-font-size:45px;
-
-color:var(--gold);
-
-}
-
-
-
-.kpi p{
-
-color:var(--muted);
-
-}
 
 
 
 
-
-
-
-
-/* =====================
+/* =========================
  ANALYTICS GRID
-===================== */
+========================= */
 
 
 .dashboard-grid{
@@ -514,7 +527,19 @@ border-radius:22px;
 
 padding:30px;
 
-min-height:260px;
+min-height:300px;
+
+transition:.3s;
+
+}
+
+
+
+.chart:hover{
+
+transform:translateY(-6px);
+
+border-color:var(--gold);
 
 }
 
@@ -533,12 +558,13 @@ margin-bottom:25px;
 
 
 
-/* Fake charts */
+
+/* LINE CHART */
 
 
 .line-chart{
 
-height:170px;
+height:160px;
 
 border-radius:15px;
 
@@ -550,21 +576,20 @@ overflow:hidden;
 background:
 
 linear-gradient(
+
 180deg,
+
 rgba(212,175,55,.25),
+
 transparent
+
 );
-
-
-border-bottom:2px solid #D4AF37;
 
 }
 
 
 
-.line-chart::before{
-
-content:"";
+.line{
 
 position:absolute;
 
@@ -572,61 +597,34 @@ left:20px;
 
 bottom:45px;
 
-width:90%;
+width:85%;
 
 height:3px;
 
-background:#D4AF37;
+background:var(--gold);
 
-transform:
-rotate(-6deg);
-
-box-shadow:
-
-50px 10px 0 #D4AF37,
-100px -15px 0 #D4AF37,
-160px 20px 0 #D4AF37,
-230px -25px 0 #D4AF37;
-
-}
-
-.line-chart::after{
-
-content:"";
-
-position:absolute;
-
-left:0;
-
-bottom:35px;
-
-width:100%;
-
-height:3px;
-
-background:#D4AF37;
-
-transform:skewY(-8deg);
-
-box-shadow:
-
-40px 20px 0 #D4AF37,
-90px -10px 0 #D4AF37,
-150px 15px 0 #D4AF37;
+transform:rotate(-6deg);
 
 }
 
 
 
-.circle-chart{
 
-width:160px;
 
-height:160px;
+
+
+/* DONUT */
+
+
+.donut{
+
+width:150px;
+
+height:150px;
 
 border-radius:50%;
 
-margin:20px auto;
+margin:30px auto;
 
 display:flex;
 
@@ -634,61 +632,58 @@ align-items:center;
 
 justify-content:center;
 
-font-size:32px;
-
-font-weight:700;
-
-color:#D4AF37;
-
-
 background:
 
 conic-gradient(
 
-#D4AF37 62%,
+var(--gold) 62%,
 
 #333 0
 
 );
 
-
-position:relative;
-
 }
 
 
-.circle-chart::before{
 
-content:"";
+.donut div{
 
-position:absolute;
+width:95px;
 
-width:100px;
-
-height:100px;
-
-background:#151515;
+height:95px;
 
 border-radius:50%;
 
+background:var(--card);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:30px;
+
+font-weight:bold;
+
+color:var(--gold);
+
 }
 
 
-.circle-chart{
-
-z-index:1;
-
-}
 
 
-
-.circle-chart.small{
+.donut.small{
 
 background:
 
 conic-gradient(
+
 var(--gold) 72%,
-#333 0);
+
+#333 0
+
+);
 
 }
 
@@ -696,13 +691,15 @@ var(--gold) 72%,
 
 
 
+
+/* BARS */
+
+
 .bars div{
 
-color:#CBD5E1;
+color:var(--muted);
 
 margin:18px 0;
-
-font-size:14px;
 
 }
 
@@ -716,15 +713,9 @@ height:18px;
 
 margin-top:8px;
 
+background:var(--gold);
+
 border-radius:20px;
-
-background:
-
-linear-gradient(
-90deg,
-#D4AF37,
-#8b6508
-);
 
 }
 
@@ -737,7 +728,6 @@ width:90%;
 }
 
 
-
 .bar2{
 
 width:70%;
@@ -745,13 +735,11 @@ width:70%;
 }
 
 
-
 .bar3{
 
 width:50%;
 
 }
-
 
 
 .bar4{
@@ -764,17 +752,29 @@ width:35%;
 
 
 
-.bar-chart div{
 
-height:80px;
+/* COLUMNS */
 
-width:18%;
+
+.columns{
+
+display:flex;
+
+align-items:end;
+
+height:150px;
+
+gap:15px;
+
+}
+
+
+
+.columns span{
+
+width:25px;
 
 background:var(--gold);
-
-display:inline-block;
-
-margin:10px;
 
 border-radius:8px;
 
@@ -782,12 +782,45 @@ border-radius:8px;
 
 
 
+.columns span:nth-child(1){
+
+height:50px;
+
+}
+
+
+.columns span:nth-child(2){
+
+height:90px;
+
+}
+
+
+.columns span:nth-child(3){
+
+height:120px;
+
+}
+
+
+.columns span:nth-child(4){
+
+height:70px;
+
+}
+
+
+.columns span:nth-child(5){
+
+height:100px;
+
+}
 
 
 
-/* =====================
- INSIGHTS
-===================== */
+
+
+/* INSIGHTS */
 
 
 .insights{
@@ -804,28 +837,11 @@ gap:20px;
 
 .insights div{
 
-background:
+background:var(--card2);
 
-linear-gradient(
-145deg,
-#222,
-#141414
-);
+padding:25px;
 
-padding:30px;
-
-border-radius:20px;
-
-border:1px solid rgba(212,175,55,.2);
-
-transition:.3s;
-
-}
-
-
-.insights div:hover{
-
-transform:translateY(-8px);
+border-radius:18px;
 
 }
 
@@ -852,10 +868,23 @@ color:var(--muted);
 
 
 
+footer{
 
-/* =====================
+text-align:center;
+
+padding:40px 0;
+
+color:var(--muted);
+
+}
+
+
+
+
+
+/* =========================
  MOBILE
-===================== */
+========================= */
 
 
 @media(max-width:900px){
@@ -866,7 +895,6 @@ color:var(--muted);
 font-size:38px;
 
 }
-
 
 
 .kpis{
@@ -876,13 +904,11 @@ grid-template-columns:1fr;
 }
 
 
-
 .filters{
 
 grid-template-columns:1fr;
 
 }
-
 
 
 .dashboard-grid{
@@ -892,7 +918,6 @@ grid-template-columns:1fr;
 }
 
 
-
 .insights{
 
 grid-template-columns:1fr;
@@ -900,199 +925,11 @@ grid-template-columns:1fr;
 }
 
 
-
-}
-
-@media(max-width:600px){
-
-.hero h1{
-
-font-size:34px;
-
-}
-
-
-.dashboard-preview{
-
-width:100%;
-
-}
-
-
-.kpi h3{
-
-font-size:32px;
-
-}
-
-
-.navbar h2{
-
-font-size:18px;
-
-}
-
-}
-
-/* NAV LINKS */
-
-
-.nav-links{
-
-display:flex;
-align-items:center;
-gap:25px;
-
-}
-
-
-.nav-links a{
-
-color:var(--text);
-
-text-decoration:none;
-
-font-size:14px;
-
-}
-
-
-.nav-links a:hover{
-
-color:var(--gold);
-
-}
-
-
-
-/* KPI ICON */
-
-.kpi .icon{
-
-font-size:38px;
-
-filter:
-grayscale(1)
-sepia(1)
-hue-rotate(5deg)
-saturate(5);
-
-margin-bottom:15px;
-
-}
-
-
-
-.kpi span{
-
-display:inline-block;
-
-margin-top:15px;
-
-font-size:13px;
-
-color:#22c55e;
-
-}
-
-
-
-/* CHART IMPROVEMENT */
-
-
-.chart{
-
-box-shadow:
-
-0 15px 40px rgba(0,0,0,.4);
-
-transition:.35s;
-
-}
-
-
-.chart:hover{
-
-transform:translateY(-6px);
-
-border-color:#D4AF37;
-
-}
-
-
-.chart:hover{
-
-transform:translateY(-8px);
-
-box-shadow:
-
-0 20px 40px rgba(212,175,55,.15);
-
-}
-
-
-
-/* BETTER BARS */
-
-
-.bars span{
-
-height:22px;
-
-background:
-
-linear-gradient(
-90deg,
-#D4AF37,
-#8b6508
-);
-
-}
-
-
-
-/* MOBILE NAV */
-
-
-@media(max-width:900px){
-
 .nav-links a{
 
 display:none;
 
 }
 
-
-.nav-links{
-
-gap:10px;
-
-}
-
-
-}
-
-/* CARD TRANSITION */
-
-.chart,
-.kpi,
-.panel{
-
-    transition:.3s;
-
-}
-
-
-/* CARD HOVER EFFECT */
-
-.chart:hover,
-.kpi:hover,
-.panel:hover{
-
-    transform:translateY(-5px);
-
-    border-color:#D4AF37;
-
-}
 
 }
