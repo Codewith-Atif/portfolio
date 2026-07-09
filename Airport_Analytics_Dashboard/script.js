@@ -1,47 +1,21 @@
 const themeButton = document.getElementById("themeToggle");
 
 
-// Load saved theme
+themeButton.addEventListener("click",()=>{
 
-const savedTheme = localStorage.getItem("theme");
+document.body.classList.toggle("light");
 
 
-if(savedTheme === "light"){
+if(document.body.classList.contains("light")){
 
-    document.body.classList.add("light");
-
-    themeButton.innerHTML = "🌙";
+themeButton.innerHTML="🌙";
 
 }
 
+else{
 
+themeButton.innerHTML="☀️";
 
-// Toggle theme
-
-themeButton.addEventListener("click",()=>{
-
-
-    document.body.classList.toggle("light");
-
-
-    if(document.body.classList.contains("light")){
-
-
-        localStorage.setItem("theme","light");
-
-        themeButton.innerHTML="🌙";
-
-
-    }
-    else{
-
-
-        localStorage.setItem("theme","dark");
-
-        themeButton.innerHTML="☀️";
-
-
-    }
-
+}
 
 });
