@@ -1,21 +1,57 @@
+// ============================
+// DARK / LIGHT MODE TOGGLE
+// ============================
+
+
 const themeButton = document.getElementById("themeToggle");
 
 
-themeButton.addEventListener("click",()=>{
+// Load saved theme
 
-document.body.classList.toggle("light");
+const savedTheme = localStorage.getItem("theme");
 
 
-if(document.body.classList.contains("light")){
+if(savedTheme === "light"){
 
-themeButton.innerHTML="🌙";
+    document.body.classList.add("light");
 
-}
-
-else{
-
-themeButton.innerHTML="☀️";
+    themeButton.innerHTML = "🌙";
 
 }
+
+
+
+
+// Toggle button
+
+
+themeButton.addEventListener("click", function(){
+
+
+    document.body.classList.toggle("light");
+
+
+
+    if(document.body.classList.contains("light")){
+
+
+        localStorage.setItem("theme","light");
+
+        themeButton.innerHTML="🌙";
+
+
+    }
+
+    else{
+
+
+        localStorage.setItem("theme","dark");
+
+        themeButton.innerHTML="☀️";
+
+
+    }
+
+
 
 });
