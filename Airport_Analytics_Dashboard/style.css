@@ -1,18 +1,18 @@
 /* =========================
-   ROOT COLORS
+   VARIABLES
 ========================= */
 
 :root{
 
 --bg:#070707;
 --card:#151515;
---card2:#202020;
+--card-light:#202020;
 
 --text:#ffffff;
 --muted:#a1a1aa;
 
 --gold:#D4AF37;
---gold-light:#F5D76E;
+--gold2:#F5D76E;
 
 --border:rgba(212,175,55,.25);
 
@@ -24,13 +24,13 @@
 
 --bg:#f5f5f5;
 --card:#ffffff;
---card2:#eeeeee;
+--card-light:#eeeeee;
 
 --text:#111827;
 --muted:#475569;
 
 --gold:#b8860b;
---gold-light:#d4af37;
+--gold2:#d4af37;
 
 --border:rgba(184,134,11,.25);
 
@@ -40,9 +40,8 @@
 
 
 
-
 /* =========================
- RESET
+RESET
 ========================= */
 
 *{
@@ -59,7 +58,6 @@ font-family:'Poppins',sans-serif;
 body{
 
 background:var(--bg);
-
 color:var(--text);
 
 transition:.4s;
@@ -71,16 +69,14 @@ transition:.4s;
 
 
 /* =========================
- NAVBAR
+NAVBAR
 ========================= */
 
 
 header{
 
 position:sticky;
-
 top:0;
-
 z-index:100;
 
 background:rgba(0,0,0,.75);
@@ -94,7 +90,6 @@ backdrop-filter:blur(15px);
 .navbar{
 
 width:90%;
-
 max-width:1300px;
 
 margin:auto;
@@ -111,7 +106,11 @@ align-items:center;
 
 
 
-.navbar h2{
+.logo{
+
+font-size:28px;
+
+font-weight:700;
 
 color:var(--gold);
 
@@ -119,7 +118,7 @@ color:var(--gold);
 
 
 
-.nav-links{
+.menu{
 
 display:flex;
 
@@ -131,11 +130,11 @@ gap:25px;
 
 
 
-.nav-links a{
-
-color:var(--text);
+.menu a{
 
 text-decoration:none;
+
+color:var(--text);
 
 font-size:14px;
 
@@ -143,7 +142,7 @@ font-size:14px;
 
 
 
-.nav-links a:hover{
+.menu a:hover{
 
 color:var(--gold);
 
@@ -153,19 +152,17 @@ color:var(--gold);
 
 #themeToggle{
 
-background:var(--gold);
-
-border:none;
-
 width:42px;
 
 height:42px;
 
 border-radius:50%;
 
-cursor:pointer;
+border:none;
 
-font-size:18px;
+background:var(--gold);
+
+cursor:pointer;
 
 }
 
@@ -174,11 +171,11 @@ font-size:18px;
 
 
 /* =========================
- CONTAINER
+MAIN
 ========================= */
 
 
-.container{
+main{
 
 width:90%;
 
@@ -193,7 +190,7 @@ margin:auto;
 
 
 /* =========================
- HERO
+HERO
 ========================= */
 
 
@@ -245,25 +242,25 @@ max-width:850px;
 
 margin:auto;
 
-color:var(--muted);
-
 font-size:18px;
 
 line-height:1.8;
+
+color:var(--muted);
 
 }
 
 
 
-.dashboard-preview{
+.dashboard-image{
 
 width:90%;
 
 max-width:1150px;
 
-margin:50px auto;
-
 display:block;
+
+margin:50px auto;
 
 border-radius:25px;
 
@@ -273,25 +270,14 @@ box-shadow:
 
 0 20px 70px rgba(212,175,55,.25);
 
-transition:.4s;
-
 }
-
-
-
-.dashboard-preview:hover{
-
-transform:scale(1.02);
-
-}
-
 
 
 
 
 
 /* =========================
- PANELS
+PANELS
 ========================= */
 
 
@@ -306,8 +292,6 @@ border-radius:25px;
 margin:35px 0;
 
 border:1px solid var(--border);
-
-transition:.3s;
 
 }
 
@@ -326,7 +310,7 @@ margin-bottom:25px;
 
 
 /* =========================
- FILTERS
+FILTERS
 ========================= */
 
 
@@ -344,11 +328,11 @@ gap:20px;
 
 .filters div{
 
-background:var(--card2);
+background:var(--card-light);
 
-padding:22px;
+padding:25px;
 
-border-radius:15px;
+border-radius:18px;
 
 border:1px solid var(--border);
 
@@ -366,7 +350,7 @@ position:absolute;
 
 right:20px;
 
-top:35px;
+top:30px;
 
 color:var(--gold);
 
@@ -376,17 +360,19 @@ color:var(--gold);
 
 .filters label{
 
+display:block;
+
 color:var(--gold);
 
-font-size:14px;
+font-size:13px;
+
+margin-bottom:10px;
 
 }
 
 
 
-.filters p{
-
-margin-top:10px;
+.filters strong{
 
 color:var(--text);
 
@@ -396,13 +382,12 @@ color:var(--text);
 
 
 
-
 /* =========================
- KPI CARDS
+KPI
 ========================= */
 
 
-.kpis{
+.kpi-grid{
 
 display:grid;
 
@@ -418,14 +403,12 @@ margin:40px 0;
 
 .kpi{
 
-background:linear-gradient(
+background:
 
+linear-gradient(
 145deg,
-
 #191919,
-
 #101010
-
 );
 
 padding:35px;
@@ -446,13 +429,11 @@ transition:.3s;
 
 transform:translateY(-8px);
 
-border-color:var(--gold);
-
 }
 
 
 
-.icon{
+.kpi-icon{
 
 font-size:35px;
 
@@ -462,13 +443,11 @@ margin-bottom:15px;
 
 
 
-.kpi h3{
+.kpi h2{
 
-font-size:50px;
+font-size:48px;
 
 color:var(--gold);
-
-margin-bottom:10px;
 
 }
 
@@ -484,13 +463,13 @@ color:var(--muted);
 
 .kpi span{
 
-display:inline-block;
+display:block;
 
-margin-top:12px;
-
-font-size:13px;
+margin-top:15px;
 
 color:#22c55e;
+
+font-size:13px;
 
 }
 
@@ -498,14 +477,12 @@ color:#22c55e;
 
 
 
-
-
 /* =========================
- ANALYTICS GRID
+ANALYTICS
 ========================= */
 
 
-.dashboard-grid{
+.analytics{
 
 display:grid;
 
@@ -517,35 +494,23 @@ gap:25px;
 
 
 
-.chart{
+.chart-card{
 
 background:var(--card);
 
-border:1px solid var(--border);
+padding:30px;
 
 border-radius:22px;
 
-padding:30px;
+border:1px solid var(--border);
 
-min-height:260px;
-
-transition:.3s;
+min-height:320px;
 
 }
 
 
 
-.chart:hover{
-
-transform:translateY(-6px);
-
-border-color:var(--gold);
-
-}
-
-
-
-.chart h3{
+.chart-card h3{
 
 color:var(--gold);
 
@@ -557,14 +522,19 @@ margin-bottom:25px;
 
 
 
+/* TRAFFIC */
 
+.traffic-chart{
 
-/* LINE CHART */
+height:170px;
 
+background:
 
-.line-chart{
-
-height:160px;
+linear-gradient(
+180deg,
+rgba(212,175,55,.25),
+transparent
+);
 
 border-radius:15px;
 
@@ -572,24 +542,11 @@ position:relative;
 
 overflow:hidden;
 
-
-background:
-
-linear-gradient(
-
-180deg,
-
-rgba(212,175,55,.25),
-
-transparent
-
-);
-
 }
 
 
 
-.line{
+.trend-line{
 
 position:absolute;
 
@@ -599,20 +556,25 @@ bottom:45px;
 
 width:85%;
 
-height:80px;
+height:3px;
 
+background:var(--gold);
 
-border-bottom:3px solid var(--gold);
-
-
-transform:
-
-skewY(-8deg);
-
+transform:rotate(-6deg);
 
 }
 
 
+
+.chart-footer{
+
+margin-top:15px;
+
+font-size:12px;
+
+color:var(--muted);
+
+}
 
 
 
@@ -621,23 +583,15 @@ skewY(-8deg);
 /* DONUT */
 
 
-/* DONUT CHART */
-
-.donut{
+.donut-chart{
 
 width:160px;
+
 height:160px;
 
+margin:20px auto;
+
 border-radius:50%;
-
-margin:30px auto;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
 
 background:
 
@@ -646,64 +600,25 @@ var(--gold) 62%,
 #333 0
 );
 
+display:flex;
 
-position:relative;
+align-items:center;
+
+justify-content:center;
 
 }
 
 
-.donut::before{
 
-content:"";
+.donut-chart div{
 
-position:absolute;
+width:100px;
 
-width:105px;
-height:105px;
+height:100px;
 
 background:var(--card);
 
 border-radius:50%;
-
-}
-
-
-.donut div{
-
-position:relative;
-
-z-index:2;
-
-font-size:30px;
-
-font-weight:700;
-
-color:var(--gold);
-
-}
-
-
-.donut.small{
-
-background:
-
-conic-gradient(
-var(--gold) 72%,
-#333 0
-);
-
-}
-
-
-.donut div{
-
-width:95px;
-
-height:95px;
-
-border-radius:50%;
-
-background:var(--card);
 
 display:flex;
 
@@ -711,27 +626,23 @@ align-items:center;
 
 justify-content:center;
 
-font-size:30px;
+color:var(--gold);
+
+font-size:28px;
 
 font-weight:bold;
-
-color:var(--gold);
 
 }
 
 
 
-
-.donut.small{
+.donut-chart.small{
 
 background:
 
 conic-gradient(
-
 var(--gold) 72%,
-
 #333 0
-
 );
 
 }
@@ -740,27 +651,26 @@ var(--gold) 72%,
 
 
 
+/* AIRLINES */
 
-/* BARS */
 
+.airline-bar label{
 
-.bars div{
+display:block;
+
+margin:15px 0 8px;
 
 color:var(--muted);
-
-margin:18px 0;
 
 }
 
 
 
-.bars span{
+.airline-bar span{
 
 display:block;
 
 height:18px;
-
-margin-top:8px;
 
 background:var(--gold);
 
@@ -770,48 +680,17 @@ border-radius:20px;
 
 
 
-.bar1{
-
-width:90%;
-
-}
 
 
-.bar2{
+/* DELAY */
 
-width:70%;
+.delay-bars{
 
-}
-
-
-.bar3{
-
-width:50%;
-
-}
-
-
-.bar4{
-
-width:35%;
-
-}
-
-
-
-
-
-
-/* COLUMNS */
-
-
-.columns{
+height:160px;
 
 display:flex;
 
 align-items:end;
-
-height:150px;
 
 gap:15px;
 
@@ -819,7 +698,7 @@ gap:15px;
 
 
 
-.columns span{
+.delay-bars span{
 
 width:25px;
 
@@ -831,37 +710,48 @@ border-radius:8px;
 
 
 
-.columns span:nth-child(1){
+.delay-bars span:nth-child(1){
 
-height:50px;
-
-}
-
-
-.columns span:nth-child(2){
-
-height:90px;
+height:60px;
 
 }
 
-
-.columns span:nth-child(3){
-
-height:120px;
-
-}
-
-
-.columns span:nth-child(4){
-
-height:70px;
-
-}
-
-
-.columns span:nth-child(5){
+.delay-bars span:nth-child(2){
 
 height:100px;
+
+}
+
+.delay-bars span:nth-child(3){
+
+height:130px;
+
+}
+
+.delay-bars span:nth-child(4){
+
+height:80px;
+
+}
+
+.delay-bars span:nth-child(5){
+
+height:110px;
+
+}
+
+
+
+
+
+/* LEGEND */
+
+
+.legend p{
+
+margin:15px 0;
+
+color:var(--muted);
 
 }
 
@@ -872,7 +762,7 @@ height:100px;
 /* INSIGHTS */
 
 
-.insights{
+.insight-grid{
 
 display:grid;
 
@@ -884,9 +774,9 @@ gap:20px;
 
 
 
-.insights div{
+.insight-grid div{
 
-background:var(--card2);
+background:var(--card-light);
 
 padding:25px;
 
@@ -896,7 +786,7 @@ border-radius:18px;
 
 
 
-.insights h3{
+.insight-grid h3{
 
 color:var(--gold);
 
@@ -906,12 +796,11 @@ margin-bottom:10px;
 
 
 
-.insights p{
+.insight-grid p{
 
 color:var(--muted);
 
 }
-
 
 
 
@@ -921,7 +810,7 @@ footer{
 
 text-align:center;
 
-padding:40px 0;
+padding:40px;
 
 color:var(--muted);
 
@@ -931,10 +820,7 @@ color:var(--muted);
 
 
 
-/* =========================
- MOBILE
-========================= */
-
+/* MOBILE */
 
 @media(max-width:900px){
 
@@ -946,7 +832,14 @@ font-size:38px;
 }
 
 
-.kpis{
+.kpi-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.analytics{
 
 grid-template-columns:1fr;
 
@@ -960,99 +853,10 @@ grid-template-columns:1fr;
 }
 
 
-.dashboard-grid{
-
-grid-template-columns:1fr;
-
-}
-
-
-.insights{
-
-grid-template-columns:1fr;
-
-}
-
-
-.nav-links a{
+.menu a{
 
 display:none;
 
 }
-
-
-}
-
-/* =====================
-   CHART LABELS
-===================== */
-
-
-.chart-labels{
-
-display:flex;
-
-justify-content:space-between;
-
-margin-top:15px;
-
-color:var(--muted);
-
-font-size:12px;
-
-}
-
-
-
-
-
-/* FLIGHT STATUS */
-
-
-.donut small{
-
-display:block;
-
-font-size:12px;
-
-color:var(--muted);
-
-margin-top:5px;
-
-}
-
-
-
-
-.status-list{
-
-margin-top:20px;
-
-}
-
-
-
-.status-list p{
-
-margin:10px 0;
-
-color:var(--muted);
-
-}
-
-
-
-
-
-/* DELAY LIST */
-
-
-.delay-list p{
-
-margin:15px 0;
-
-font-size:15px;
-
-color:var(--text);
 
 }
