@@ -696,16 +696,27 @@ var(--gold) 72%,
 
 
 
+.bars div{
+
+color:#CBD5E1;
+
+margin:18px 0;
+
+font-size:14px;
+
+}
+
+
+
 .bars span{
 
 display:block;
 
-height:20px;
+height:18px;
 
-margin:18px 0;
+margin-top:8px;
 
-border-radius:10px;
-
+border-radius:20px;
 
 background:
 
@@ -715,30 +726,35 @@ linear-gradient(
 #8b6508
 );
 
-
 }
 
 
 
-.bars span:nth-child(1){
+.bar1{
 
 width:90%;
 
 }
 
-.bars span:nth-child(2){
+
+
+.bar2{
 
 width:70%;
 
 }
 
-.bars span:nth-child(3){
+
+
+.bar3{
 
 width:50%;
 
 }
 
-.bars span:nth-child(4){
+
+
+.bar4{
 
 width:35%;
 
