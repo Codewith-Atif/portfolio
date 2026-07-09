@@ -1,239 +1,198 @@
-*{
+/* =========================
+   GLOBAL RESET
+========================= */
 
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    background: #0F172A;
+    color: white;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 50px 0;
+}
+
+
+/* =========================
+   MAIN TITLE
+========================= */
+
+h1 {
+    color: #3B82F6;
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   DASHBOARD IMAGE
+========================= */
+
+.dashboard-image {
+
+    width: 85%;
+    display: block;
+    margin: 30px auto;
+    border-radius: 20px;
 
 }
 
 
-body{
+/* =========================
+   SECTIONS
+========================= */
 
-background:#0F172A;
-color:white;
+.section {
 
-}
-
-
-.container{
-
-width:90%;
-max-width:1100px;
-margin:auto;
+    background: #1E293B;
+    padding: 30px;
+    border-radius: 20px;
+    margin: 25px 0;
 
 }
 
 
+h2 {
 
-.hero{
-
-padding:70px 0;
-text-align:center;
-
-}
-
-
-.hero h1{
-
-font-size:48px;
-color:#3B82F6;
+    color: #60A5FA;
+    margin-bottom: 20px;
 
 }
 
 
-.hero p{
+/* =========================
+   KPI GRID
+========================= */
 
-margin:20px auto;
-max-width:800px;
-color:#CBD5E1;
-font-size:18px;
+.grid {
 
-}
-
-
-.dashboard-image{
-
-width:85%;
-margin:40px auto;
-border-radius:20px;
-display:block;
-
-box-shadow:
-0 0 40px rgba(59,130,246,.3);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 
 }
 
 
+.grid div {
 
-.buttons{
-
-margin-top:30px;
-
-}
-
-
-
-.btn{
-
-background:#2563EB;
-color:white;
-padding:14px 30px;
-border-radius:10px;
-text-decoration:none;
-margin:10px;
+    background: #334155;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
 
 }
 
 
-.secondary{
+.grid h3 {
 
-background:#1E293B;
-
-}
-
-
-
-
-.section{
-
-background:#1E293B;
-padding:35px;
-border-radius:20px;
-margin:30px 0;
+    color: #3B82F6;
+    font-size: 30px;
+    margin-bottom: 10px;
 
 }
 
 
-.section h2{
+.grid p {
 
-color:#60A5FA;
-margin-bottom:25px;
-
-}
-
-
-
-
-.kpi-grid{
-
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
+    color: #CBD5E1;
 
 }
 
 
+/* =========================
+   TECHNOLOGY TAGS
+========================= */
 
-.kpi{
+span {
 
-background:#334155;
-padding:25px;
-border-radius:15px;
-text-align:center;
-
-}
-
-
-.kpi h3{
-
-font-size:32px;
-color:#3B82F6;
+    background: #2563EB;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 5px;
 
 }
 
 
+/* =========================
+   LIST STYLE
+========================= */
 
+li {
 
-
-.tags span{
-
-display:inline-block;
-background:#2563EB;
-padding:10px 18px;
-border-radius:25px;
-margin:5px;
+    color: #CBD5E1;
+    margin: 12px 0;
 
 }
 
 
+/* =========================
+   BUTTONS
+========================= */
 
+.btn {
 
-li{
-
-margin:12px 0;
-color:#CBD5E1;
-
-}
-
-
-
-.insight-grid{
-
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
+    background: #2563EB;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
 
 }
 
 
-.insight{
+.btn:hover {
 
-background:#334155;
-padding:25px;
-border-radius:15px;
+    background: #1D4ED8;
 
 }
 
 
-.insight h3{
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
 
-color:#3B82F6;
-margin-bottom:10px;
+@media(max-width:800px) {
 
-}
+    .grid {
 
+        grid-template-columns: 1fr;
 
-.insight p{
-
-color:#CBD5E1;
-
-}
+    }
 
 
+    h1 {
 
-.workflow{
+        font-size: 32px;
 
-text-align:center;
-font-size:20px;
-line-height:2;
-color:#CBD5E1;
-
-}
+    }
 
 
+    .dashboard-image {
 
-@media(max-width:800px){
+        width: 100%;
 
-.kpi-grid,
-.insight-grid{
-
-grid-template-columns:1fr;
-
-}
-
-
-.hero h1{
-
-font-size:32px;
-
-}
-
-
-.dashboard-image{
-
-width:100%;
-
-}
+    }
 
 }
