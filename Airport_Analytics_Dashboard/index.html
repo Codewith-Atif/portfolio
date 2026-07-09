@@ -29,17 +29,20 @@
 
 <div class="nav-links">
 
-<a href="#dashboard">
+<a href="#overview">
 Overview
 </a>
+
 
 <a href="#analytics">
 Analytics
 </a>
 
+
 <a href="#insights">
 Insights
 </a>
+
 
 <a href="https://github.com/Codewith-Atif/portfolio/tree/main/Airport_Analytics_Dashboard"
 target="_blank">
@@ -54,6 +57,7 @@ GitHub
 
 </div>
 
+
 </div>
 
 </header>
@@ -66,9 +70,9 @@ GitHub
 
 
 
-<!-- HERO -->
+<!-- HERO SECTION -->
 
-<section class="hero" id="dashboard">
+<section class="hero" id="overview">
 
 
 <div class="badge">
@@ -82,12 +86,13 @@ Airport Analytics Dashboard
 
 
 <p>
-Real-time analytics dashboard for passenger flow,
+Real-time Business Intelligence dashboard analyzing passenger flow,
 flight operations, airline performance and delay monitoring.
 </p>
 
 
-<img 
+
+<img
 src="https://raw.githubusercontent.com/Codewith-Atif/portfolio/main/Airport_Analytics_Dashboard/assets/images/airport-dashboard-preview.png"
 class="dashboard-preview"
 alt="Airport Analytics Dashboard"
@@ -101,8 +106,7 @@ alt="Airport Analytics Dashboard"
 
 
 
-
-<!-- FILTER PANEL -->
+<!-- FILTERS -->
 
 
 <section class="panel">
@@ -144,6 +148,7 @@ All Airports
 
 
 
+
 <div>
 
 <label>
@@ -155,6 +160,7 @@ All Airlines
 </p>
 
 </div>
+
 
 
 </div>
@@ -177,21 +183,26 @@ All Airlines
 
 <div class="kpi">
 
+
 <div class="icon">
 👥
 </div>
+
 
 <h3>
 50.2K
 </h3>
 
+
 <p>
 Total Passengers
 </p>
 
-<span>
+
+<span class="positive">
 ↑ 12.5% Growth
 </span>
+
 
 </div>
 
@@ -200,22 +211,27 @@ Total Passengers
 
 
 <div class="kpi">
+
 
 <div class="icon">
 ✈️
 </div>
 
+
 <h3>
 512
 </h3>
+
 
 <p>
 Total Flights
 </p>
 
-<span>
+
+<span class="positive">
 ↑ 8.3% Growth
 </span>
+
 
 </div>
 
@@ -224,22 +240,27 @@ Total Flights
 
 
 <div class="kpi">
+
 
 <div class="icon">
 ⏱
 </div>
 
+
 <h3>
 18 min
 </h3>
+
 
 <p>
 Average Delay
 </p>
 
-<span>
+
+<span class="positive">
 ↓ 5.6% Improved
 </span>
+
 
 </div>
 
@@ -249,23 +270,29 @@ Average Delay
 
 <div class="kpi">
 
+
 <div class="icon">
 🏢
 </div>
+
 
 <h3>
 15
 </h3>
 
+
 <p>
 Active Airlines
 </p>
+
 
 <span>
 No Change
 </span>
 
+
 </div>
+
 
 
 </section>
@@ -276,9 +303,7 @@ No Change
 
 
 
-
-
-<!-- ANALYTICS -->
+<!-- ANALYTICS GRID -->
 
 
 <section class="dashboard-grid" id="analytics">
@@ -287,11 +312,19 @@ No Change
 
 <div class="chart">
 
+
 <h3>
 Passenger Traffic Trend
 </h3>
 
-<div class="line-chart"></div>
+
+<div class="line-chart">
+
+
+<div class="line"></div>
+
+
+</div>
 
 
 </div>
@@ -300,13 +333,20 @@ Passenger Traffic Trend
 
 
 
+
+
 <div class="chart">
+
 
 <h3>
 Flight Status
 </h3>
 
-<div class="circle-chart">
+
+<div class="donut">
+
+
+<div>
 62%
 </div>
 
@@ -314,14 +354,21 @@ Flight Status
 </div>
 
 
+</div>
+
+
+
+
 
 
 
 <div class="chart">
 
+
 <h3>
 Top Airlines
 </h3>
+
 
 
 <div class="bars">
@@ -334,7 +381,6 @@ IndiGo
 <span class="bar1"></span>
 
 </div>
-
 
 
 <div>
@@ -366,10 +412,13 @@ Vistara
 </div>
 
 
+
 </div>
 
 
 </div>
+
+
 
 
 
@@ -377,12 +426,16 @@ Vistara
 
 <div class="chart">
 
+
 <h3>
 Passenger Distribution
 </h3>
 
 
-<div class="circle-chart small">
+<div class="donut small">
+
+
+<div>
 72%
 </div>
 
@@ -390,37 +443,43 @@ Passenger Distribution
 </div>
 
 
+</div>
+
+
+
+
 
 
 
 <div class="chart">
+
 
 <h3>
 Average Delay Analysis
 </h3>
 
 
-<div class="bar-chart">
+<div class="columns">
 
-<div></div>
-
-<div></div>
-
-<div></div>
-
-<div></div>
-
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
 
 </div>
 
 
 </div>
+
+
 
 
 
 
 
 <div class="chart">
+
 
 <h3>
 Delay Reasons
@@ -430,19 +489,22 @@ Delay Reasons
 <ul>
 
 <li>
-Weather 35%
+Weather - 35%
 </li>
 
-<li>
-Air Traffic 30%
-</li>
 
 <li>
-Technical 20%
+Air Traffic - 30%
 </li>
 
+
 <li>
-Other 15%
+Technical - 20%
+</li>
+
+
+<li>
+Other - 15%
 </li>
 
 
@@ -472,8 +534,8 @@ Business Insights
 </h2>
 
 
-<div class="insights">
 
+<div class="insights">
 
 
 <div>
@@ -483,11 +545,10 @@ Passenger Growth
 </h3>
 
 <p>
-Identified peak travel periods and passenger demand trends.
+Peak travel periods and passenger demand analysis.
 </p>
 
 </div>
-
 
 
 
@@ -498,7 +559,7 @@ Operational Efficiency
 </h3>
 
 <p>
-Analyzed delays and flight performance metrics.
+Flight delays and airport performance monitoring.
 </p>
 
 </div>
@@ -513,11 +574,10 @@ Airline Performance
 </h3>
 
 <p>
-Compared airline contribution and route efficiency.
+Airline contribution and route efficiency comparison.
 </p>
 
 </div>
-
 
 
 </div>
@@ -526,6 +586,17 @@ Compared airline contribution and route efficiency.
 </section>
 
 
+
+
+
+
+<footer>
+
+<p>
+Airport Analytics Dashboard | Data Analytics Portfolio
+</p>
+
+</footer>
 
 
 
