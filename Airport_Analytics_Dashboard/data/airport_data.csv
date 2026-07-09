@@ -1,0 +1,7 @@
+Date,Airport,Airline,Passengers,Flights,Delay_Minutes,Flight_Type
+2025-01-01,Delhi,IndiGo,5200,45,18,Domestic
+2025-01-01,Mumbai,Air India,4100,35,25,Domestic
+2025-01-02,Bangalore,Emirates,3500,20,12,International
+2025-01-03,Delhi,Vistara,4600,38,10,Domestic
+2025-01-04,Mumbai,SpiceJet,3000,28,30,Domestic
+2025-01-05,Bangalore,Singapore Airlines,2700,15,8,International
