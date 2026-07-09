@@ -696,3 +696,34 @@ grid-template-columns:1fr;
 
 
 }
+
+@media(max-width:600px){
+
+.hero h1{
+
+font-size:34px;
+
+}
+
+
+.dashboard-preview{
+
+width:100%;
+
+}
+
+
+.kpi h3{
+
+font-size:32px;
+
+}
+
+
+.navbar h2{
+
+font-size:18px;
+
+}
+
+}
