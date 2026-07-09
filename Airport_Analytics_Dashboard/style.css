@@ -230,23 +230,10 @@ line-height:1.8;
 
 .dashboard-preview{
 
-width:100%;
+width:85%;
+max-width:1050px;
 
-max-width:1150px;
-
-margin:50px auto;
-
-display:block;
-
-border-radius:25px;
-
-border:1px solid var(--border);
-
-box-shadow:
-
-0 20px 70px rgba(212,175,55,.2);
-
-transition:.4s;
+margin:40px auto;
 
 }
 
