@@ -527,7 +527,7 @@ border-radius:22px;
 
 padding:30px;
 
-min-height:300px;
+min-height:260px;
 
 transition:.3s;
 
@@ -599,11 +599,16 @@ bottom:45px;
 
 width:85%;
 
-height:3px;
+height:80px;
 
-background:var(--gold);
 
-transform:rotate(-6deg);
+border-bottom:3px solid var(--gold);
+
+
+transform:
+
+skewY(-8deg);
+
 
 }
 
@@ -616,11 +621,12 @@ transform:rotate(-6deg);
 /* DONUT */
 
 
+/* DONUT CHART */
+
 .donut{
 
-width:150px;
-
-height:150px;
+width:160px;
+height:160px;
 
 border-radius:50%;
 
@@ -632,18 +638,61 @@ align-items:center;
 
 justify-content:center;
 
+
 background:
 
 conic-gradient(
-
 var(--gold) 62%,
-
 #333 0
-
 );
+
+
+position:relative;
 
 }
 
+
+.donut::before{
+
+content:"";
+
+position:absolute;
+
+width:105px;
+height:105px;
+
+background:var(--card);
+
+border-radius:50%;
+
+}
+
+
+.donut div{
+
+position:relative;
+
+z-index:2;
+
+font-size:30px;
+
+font-weight:700;
+
+color:var(--gold);
+
+}
+
+
+.donut.small{
+
+background:
+
+conic-gradient(
+var(--gold) 72%,
+#333 0
+);
+
+}
 
 
 .donut div{
