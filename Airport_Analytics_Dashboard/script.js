@@ -1,12 +1,12 @@
-// ============================
+// ===============================
 // DARK / LIGHT MODE TOGGLE
-// ============================
+// ===============================
 
 
 const themeButton = document.getElementById("themeToggle");
 
 
-// Load saved theme
+// Load previous theme
 
 const savedTheme = localStorage.getItem("theme");
 
@@ -22,8 +22,7 @@ if(savedTheme === "light"){
 
 
 
-// Toggle button
-
+// Toggle theme
 
 themeButton.addEventListener("click", function(){
 
@@ -51,7 +50,6 @@ themeButton.addEventListener("click", function(){
 
 
     }
-
 
 
 });
