@@ -1,0 +1,22 @@
+field,type,description
+project_id,text,Unique synthetic publishing job ID
+created_date,date,Date the job entered production
+due_date,date,Committed delivery date
+completed_date,date,Actual completion date when completed
+department,text,Owning publishing department
+content_type,text,Publishing deliverable category
+complexity,text,Low medium or high complexity band
+workflow,text,AI-Assisted or Manual workflow
+prompt_template,text,Prompt framework used or Manual / NA
+pages,integer,Number of content pages or page equivalents
+actual_hours,decimal,Recorded production hours
+baseline_hours,decimal,Estimated manual production hours
+hours_saved,decimal,Baseline minus actual hours floored at zero
+actual_cost_inr,decimal,Actual labor cost estimate in INR
+baseline_cost_inr,decimal,Baseline manual labor cost estimate in INR
+cost_saved_inr,decimal,Baseline minus actual cost floored at zero
+revisions,integer,Number of rework rounds
+first_pass_approved,text,Whether completed work passed without rework
+quality_score,decimal,Editorial quality score from 0 to 100
+on_time,text,Whether a completed project met its due date
+status,text,Completed In Review or In Progress

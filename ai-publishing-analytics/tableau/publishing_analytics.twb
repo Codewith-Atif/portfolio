@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook original-version='18.1' source-build='2024.1' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences><preference name='ui.encoding.shelf.height' value='24'/></preferences>
+  <datasources>
+    <datasource caption='Publishing Projects' inline='true' name='federated.publishing'>
+      <connection class='textscan' directory='../data' filename='publishing_projects.csv' header='yes' separator=','>
+        <relation name='publishing_projects.csv' table='[publishing_projects#csv]' type='table'/>
+      </connection>
+      <column datatype='string' name='[project_id]' role='dimension' type='nominal'/>
+      <column datatype='date' name='[created_date]' role='dimension' type='ordinal'/>
+      <column datatype='string' name='[department]' role='dimension' type='nominal'/>
+      <column datatype='string' name='[content_type]' role='dimension' type='nominal'/>
+      <column datatype='string' name='[workflow]' role='dimension' type='nominal'/>
+      <column datatype='real' name='[quality_score]' role='measure' type='quantitative'/>
+      <column datatype='real' name='[hours_saved]' role='measure' type='quantitative'/>
+      <column datatype='real' name='[cost_saved_inr]' role='measure' type='quantitative'/>
+      <column datatype='integer' name='[revisions]' role='measure' type='quantitative'/>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Project Volume'>
+      <table><view><datasources><datasource caption='Publishing Projects' name='federated.publishing'/></datasources></view><style/></table>
+    </worksheet>
+  </worksheets>
+  <windows><window class='worksheet' name='Project Volume'/></windows>
+</workbook>
