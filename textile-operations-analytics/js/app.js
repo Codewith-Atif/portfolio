@@ -1,5 +1,21 @@
 const palette={green:'#0b7057',lime:'#b9db69',ink:'#10211d',muted:'#9bad9f'};
 let rows=[],charts=[];
+
+const plantFilter = document.getElementById('plantFilter');
+const fabricFilter = document.getElementById('fabricFilter');
+const shiftFilter = document.getElementById('shiftFilter');
+
+const productionKpi = document.getElementById('productionKpi');
+const efficiencyKpi = document.getElementById('efficiencyKpi');
+const defectKpi = document.getElementById('defectKpi');
+const wasteKpi = document.getElementById('wasteKpi');
+const otdKpi = document.getElementById('otdKpi');
+const recordCount = document.getElementById('recordCount');
+
+const trendChart = document.getElementById('trendChart');
+const plantChart = document.getElementById('plantChart');
+const defectChart = document.getElementById('defectChart');
+const lineChart = document.getElementById('lineChart');
 const num=v=>Number(v)||0;
 const pct=v=>`${v.toFixed(1)}%`;
 const compact=v=>new Intl.NumberFormat('en-IN',{notation:'compact',maximumFractionDigits:2}).format(v);
