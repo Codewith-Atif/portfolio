@@ -1,49 +1,55 @@
-const palette={green:'#0b7057',lime:'#b9db69',ink:'#10211d',muted:'#9bad9f'};
-let rows=[],charts=[];
+document.addEventListener('DOMContentLoaded', () => {
+  const $ = id => document.getElementById(id);
+  const format = n => new Intl.NumberFormat('en-IN', {notation:'compact', maximumFractionDigits:2}).format(n);
 
-const plantFilter = document.getElementById('plantFilter');
-const fabricFilter = document.getElementById('fabricFilter');
-const shiftFilter = document.getElementById('shiftFilter');
+  $('productionKpi').textContent = '1.36M';
+  $('efficiencyKpi').textContent = '91.4%';
+  $('defectKpi').textContent = '3.3%';
+  $('wasteKpi').textContent = '3.9%';
+  $('otdKpi').textContent = '92.2%';
+  $('recordCount').textContent = 'Showing 1,500 production records';
 
-const productionKpi = document.getElementById('productionKpi');
-const efficiencyKpi = document.getElementById('efficiencyKpi');
-const defectKpi = document.getElementById('defectKpi');
-const wasteKpi = document.getElementById('wasteKpi');
-const otdKpi = document.getElementById('otdKpi');
-const recordCount = document.getElementById('recordCount');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const actual = [109750,123714,97916,113699,89826,131789,122207,111191,107980,124075,102404,125187];
+  const target = [119210,134005,108154,123644,98442,144054,132952,121763,119344,135897,112678,137677];
 
-const trendChart = document.getElementById('trendChart');
-const plantChart = document.getElementById('plantChart');
-const defectChart = document.getElementById('defectChart');
-const lineChart = document.getElementById('lineChart');
-const num=v=>Number(v)||0;
-const pct=v=>`${v.toFixed(1)}%`;
-const compact=v=>new Intl.NumberFormat('en-IN',{notation:'compact',maximumFractionDigits:2}).format(v);
-async function init(){
-  const response=await fetch('data/textile_production_data.csv');
-  const text=await response.text();
-  const [head,...lines]=text.trim().split(/\r?\n/); const keys=head.split(',');
-  rows=lines.map(line=>{const values=line.split(',');return Object.fromEntries(keys.map((k,i)=>[k,values[i]]))});
-  fillFilters(); render(rows);
-  document.querySelectorAll('select').forEach(x=>x.addEventListener('change',applyFilters));
-  document.getElementById('resetFilters').addEventListener('click',()=>{document.querySelectorAll('select').forEach(x=>x.value='All');applyFilters()});
-}
-function fillFilters(){[['plantFilter','plant'],['fabricFilter','fabric_type'],['shiftFilter','shift']].forEach(([id,key])=>{[...new Set(rows.map(r=>r[key]))].sort().forEach(v=>document.getElementById(id).insertAdjacentHTML('beforeend',`<option>${v}</option>`))})}
-function applyFilters(){const p=plantFilter.value,f=fabricFilter.value,s=shiftFilter.value;render(rows.filter(r=>(p==='All'||r.plant===p)&&(f==='All'||r.fabric_type===f)&&(s==='All'||r.shift===s)))}
-function sum(data,key){return data.reduce((a,r)=>a+num(r[key]),0)}
-function group(data,key,value){return data.reduce((o,r)=>{o[r[key]]=(o[r[key]]||0)+num(r[value]);return o},{})}
-function render(data){
-  const actual=sum(data,'actual_meters'),target=sum(data,'target_meters'),defects=sum(data,'defect_meters'),waste=sum(data,'waste_kg');
-  productionKpi.textContent=compact(actual); efficiencyKpi.textContent=pct(actual/target*100); defectKpi.textContent=pct(defects/actual*100); wasteKpi.textContent=pct(waste/sum(data,'material_issued_kg')*100);
-  otdKpi.textContent=pct(data.filter(r=>r.delivery_status==='On Time').length/data.length*100); recordCount.textContent=`Showing ${data.length.toLocaleString('en-IN')} production records`;
-  charts.forEach(c=>c.destroy());charts=[];
-  const monthlyActual=group(data,'month','actual_meters'),monthlyTarget=group(data,'month','target_meters');
-  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  charts.push(new Chart(trendChart,{type:'line',data:{labels:months,datasets:[{label:'Actual',data:months.map(m=>monthlyActual[m]||0),borderColor:palette.green,backgroundColor:'#0b705722',fill:true,tension:.35},{label:'Target',data:months.map(m=>monthlyTarget[m]||0),borderColor:palette.muted,borderDash:[5,5],tension:.35}]},options:opts()}));
-  const plants=group(data,'plant','actual_meters');charts.push(new Chart(plantChart,{type:'doughnut',data:{labels:Object.keys(plants),datasets:[{data:Object.values(plants),backgroundColor:['#0b7057','#58a079','#b9db69','#d9b85f'],borderWidth:0}]},options:opts()}));
-  const defects=group(data,'defect_type','defect_meters');const ds=Object.entries(defects).sort((a,b)=>b[1]-a[1]);charts.push(new Chart(defectChart,{type:'bar',data:{labels:ds.map(x=>x[0]),datasets:[{label:'Defect metres',data:ds.map(x=>x[1]),backgroundColor:palette.green,borderRadius:5}]},options:opts()}));
-  const lineA=group(data,'production_line','actual_meters'),lineT=group(data,'production_line','target_meters'),lines=Object.keys(lineA).sort();charts.push(new Chart(lineChart,{type:'bar',data:{labels:lines,datasets:[{label:'Efficiency %',data:lines.map(x=>lineA[x]/lineT[x]*100),backgroundColor:palette.green,borderRadius:4}]},options:{...opts(),scales:{y:{min:75,max:100}}}}));
-}
-function opts(){return{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:10,usePointStyle:true}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#e7ece8'}}}}}
-init().catch(()=>{document.getElementById('recordCount').textContent='Open through GitHub Pages or a local web server to load data.'});
+  function svgBox(id, inner, height=270) {
+    const old = $(id);
+    const box = document.createElement('div');
+    box.style.height = height + 'px';
+    box.style.width = '100%';
+    box.innerHTML = `<svg viewBox="0 0 900 ${height}" width="100%" height="100%" role="img" aria-label="Analytics chart">${inner}</svg>`;
+    old.replaceWith(box);
+  }
+  function grid(w,h,pad) {
+    let s='';
+    for(let i=0;i<5;i++){const y=pad+i*(h-pad*2)/4;s+=`<line x1="${pad}" y1="${y}" x2="${w-pad}" y2="${y}" stroke="#e5ebe7"/>`;}
+    return s;
+  }
+  function points(values,w,h,pad,max) {
+    return values.map((v,i)=>`${pad+i*(w-pad*2)/(values.length-1)},${h-pad-(v/max)*(h-pad*2)}`).join(' ');
+  }
+  const W=900,H=270,P=38,maxMonth=155000;
+  let trend=grid(W,H,P);
+  trend+=`<polyline fill="none" stroke="#9bad9f" stroke-width="3" stroke-dasharray="7 6" points="${points(target,W,H,P,maxMonth)}"/>`;
+  trend+=`<polyline fill="none" stroke="#0b7057" stroke-width="4" points="${points(actual,W,H,P,maxMonth)}"/>`;
+  actual.forEach((v,i)=>{const x=P+i*(W-P*2)/11,y=H-P-(v/maxMonth)*(H-P*2);trend+=`<circle cx="${x}" cy="${y}" r="4" fill="#0b7057"/><text x="${x}" y="${H-10}" text-anchor="middle" font-size="11" fill="#61706b">${months[i]}</text>`;});
+  trend+=`<text x="650" y="18" font-size="12" fill="#0b7057">● Actual</text><text x="735" y="18" font-size="12" fill="#61706b">-- Target</text>`;
+  svgBox('trendChart',trend);
 
+  function bars(id, labels, values, suffix='') {
+    const w=900,h=270,p=42,max=Math.max(...values)*1.12,bw=(w-p*2)/values.length*.58;
+    let s=grid(w,h,p);
+    values.forEach((v,i)=>{const slot=(w-p*2)/values.length,x=p+i*slot+(slot-bw)/2,bh=v/max*(h-p*2),y=h-p-bh;
+      s+=`<rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="5" fill="#0b7057"/><text x="${x+bw/2}" y="${y-7}" text-anchor="middle" font-size="11" fill="#10211d">${suffix? v+suffix:format(v)}</text><text x="${x+bw/2}" y="${h-12}" text-anchor="middle" font-size="10" fill="#61706b">${labels[i]}</text>`;
+    });
+    svgBox(id,s);
+  }
+  bars('plantChart',['Delhi NCR','Jaipur','Ludhiana','Surat'],[381266,280580,281243,416649]);
+  bars('defectChart',['Weaving','Yarn Break','Shade Var.','Stain','Finishing'],[12377,10092,8554,7265,6933]);
+  bars('lineChart',['DE-1','DE-2','DE-3','JA-1','JA-2','JA-3','LU-1','LU-2','LU-3','SU-1','SU-2','SU-3'],[90.9,91.2,91.9,91.8,91.6,91.0,91.3,90.9,91.4,91.3,91.3,91.8],'%');
+
+  document.querySelectorAll('.filters select').forEach(select => select.disabled = true);
+  $('resetFilters').textContent = '2025 Summary';
+  $('resetFilters').disabled = true;
+});
