@@ -1,72 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Textile operations analytics portfolio project by Mohd Atif">
-  <title>Textile Operations Analytics | Mohd Atif</title>
+  <title>Textile Operations Intelligence | Mohd Atif</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.7/chart.umd.min.js" defer></script>
-  <script src="js/app.js?v=5" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <script src="js/app.js?v=6" defer></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#">WEAVE<span>IQ</span></a>
-    <nav><a href="#dashboard">Dashboard</a><a href="#insights">Insights</a><a href="#method">Method</a><a href="../">Portfolio</a></nav>
+    <a class="brand" href="#"><span class="brand-icon">W</span><span>WeaveMetrics<small>Textile Intelligence</small></span></a>
+    <nav aria-label="Primary navigation"><a href="#dashboard">Dashboard</a><a href="#insights">Findings</a><a href="#method">Workflow</a><a href="../">Portfolio ↗</a></nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme"><span id="themeIcon">☾</span><span class="theme-label">Dark</span></button>
   </header>
 
   <main>
     <section class="hero">
-      <div>
-        <p class="eyebrow">TEXTILE MANUFACTURING • DATA ANALYTICS</p>
-        <h1>Turning shop-floor data into <span>operational decisions.</span></h1>
-        <p class="lead">An end-to-end analytics case study covering production efficiency, quality, waste, downtime and delivery performance.</p>
-        <div class="actions"><a class="button primary" href="#dashboard">Explore dashboard</a><a class="button" href="data/textile_production_data.csv" download>Download dataset</a></div>
+      <div class="hero-copy">
+        <p class="eyebrow">MANUFACTURING INTELLIGENCE / 2025</p>
+        <h1>Textile operations,<br><em>woven into insight.</em></h1>
+        <p class="lead">A production intelligence case study connecting shop-floor efficiency, fabric quality, material waste, downtime and delivery reliability.</p>
+        <div class="actions"><a class="button primary" href="#dashboard">View performance</a><a class="button ghost" href="data/textile_production_data.csv" download>↓ Get the dataset</a></div>
+        <div class="tool-line"><span>PYTHON</span><span>SQL</span><span>EXCEL</span><span>TABLEAU</span><span>JAVASCRIPT</span></div>
       </div>
-      <div class="hero-panel">
-        <p>2025 PERFORMANCE SNAPSHOT</p>
-        <strong>1.36M</strong><span>metres produced</span>
-        <div class="mini-grid"><div><b>4</b><small>Plants</small></div><div><b>12</b><small>Lines</small></div><div><b>1,500</b><small>Records</small></div></div>
-      </div>
+      <aside class="hero-visual" aria-label="Project performance summary">
+        <div class="fabric-grid"></div>
+        <div class="visual-label">ANNUAL OUTPUT</div>
+        <strong>1.36<small>M metres</small></strong>
+        <div class="visual-stats"><div><b>04</b><span>Plants</span></div><div><b>12</b><span>Lines</span></div><div><b>1,500</b><span>Runs</span></div></div>
+      </aside>
     </section>
 
     <section id="dashboard" class="dashboard">
-      <div class="section-head"><div><p class="eyebrow">EXECUTIVE DASHBOARD</p><h2>Operations control centre</h2></div><p id="recordCount">Showing all production records</p></div>
+      <div class="section-head"><div><p class="eyebrow">LIVE DATA VIEW</p><h2>Production floor overview</h2></div><p id="recordCount">Loading production records…</p></div>
       <div class="filters">
+        <div class="filter-title"><span>⌁</span><b>Slice the data</b></div>
         <label>Plant<select id="plantFilter"><option value="All">All plants</option></select></label>
-        <label>Fabric<select id="fabricFilter"><option value="All">All fabrics</option></select></label>
-        <label>Shift<select id="shiftFilter"><option value="All">All shifts</option></select></label>
-        <button id="resetFilters">Reset filters</button>
+        <label>Fabric type<select id="fabricFilter"><option value="All">All fabrics</option></select></label>
+        <label>Work shift<select id="shiftFilter"><option value="All">All shifts</option></select></label>
+        <button id="resetFilters">Reset</button>
       </div>
+
       <div class="kpis">
-        <article><span>Production</span><strong id="productionKpi">—</strong><small>metres</small></article>
-        <article><span>Efficiency</span><strong id="efficiencyKpi">—</strong><small>actual vs target</small></article>
-        <article><span>Defect rate</span><strong id="defectKpi">—</strong><small>lower is better</small></article>
-        <article><span>Waste rate</span><strong id="wasteKpi">—</strong><small>material loss</small></article>
-        <article><span>On-time delivery</span><strong id="otdKpi">—</strong><small>customer orders</small></article>
+        <article><div class="kpi-top"><span>01</span><i>↗</i></div><strong id="productionKpi">—</strong><h3>Production</h3><small>Total metres manufactured</small></article>
+        <article><div class="kpi-top"><span>02</span><i>◎</i></div><strong id="efficiencyKpi">—</strong><h3>Efficiency</h3><small>Actual output vs target</small></article>
+        <article><div class="kpi-top"><span>03</span><i>◇</i></div><strong id="defectKpi">—</strong><h3>Defect rate</h3><small>Share requiring attention</small></article>
+        <article><div class="kpi-top"><span>04</span><i>♻</i></div><strong id="wasteKpi">—</strong><h3>Waste rate</h3><small>Material loss recorded</small></article>
+        <article><div class="kpi-top"><span>05</span><i>✓</i></div><strong id="otdKpi">—</strong><h3>On-time delivery</h3><small>Orders meeting schedule</small></article>
       </div>
+
       <div class="charts">
-        <article class="chart wide"><div><h3>Monthly production vs target</h3><p>Metres by production month</p></div><canvas id="trendChart"></canvas></article>
-        <article class="chart"><div><h3>Output by plant</h3><p>Contribution to total production</p></div><canvas id="plantChart"></canvas></article>
-        <article class="chart"><div><h3>Defect Pareto</h3><p>Defective metres by category</p></div><canvas id="defectChart"></canvas></article>
-        <article class="chart wide"><div><h3>Line performance</h3><p>Efficiency and downtime comparison</p></div><canvas id="lineChart"></canvas></article>
+        <article class="chart wide"><div class="chart-head"><span>01 / TREND</span><div><h3>Production rhythm</h3><p>Monthly actual output against plan</p></div></div><canvas id="trendChart"></canvas></article>
+        <article class="chart"><div class="chart-head"><span>02 / PLANTS</span><div><h3>Plant contribution</h3><p>Output distribution by location</p></div></div><canvas id="plantChart"></canvas></article>
+        <article class="chart"><div class="chart-head"><span>03 / QUALITY</span><div><h3>Defect Pareto</h3><p>Defective metres by category</p></div></div><canvas id="defectChart"></canvas></article>
+        <article class="chart wide"><div class="chart-head"><span>04 / LINES</span><div><h3>Production line efficiency</h3><p>Target attainment across twelve lines</p></div></div><canvas id="lineChart"></canvas></article>
       </div>
     </section>
 
     <section id="insights" class="insights">
-      <p class="eyebrow">ACTIONABLE FINDINGS</p><h2>What management should do next</h2>
-      <div class="insight-grid">
-        <article><b>01</b><h3>Stabilise night-shift quality</h3><p>Night-shift defect rates trend above the portfolio average. Add first-piece inspection and targeted operator coaching.</p></article>
-        <article><b>02</b><h3>Attack the downtime Pareto</h3><p>Maintenance and yarn-break events create the largest avoidable capacity loss. Prioritise preventive maintenance on bottom-quartile lines.</p></article>
-        <article><b>03</b><h3>Protect delivery reliability</h3><p>Late orders cluster around low-efficiency production runs. Use a risk flag when efficiency falls below 88% or downtime exceeds 70 minutes.</p></article>
+      <div class="insight-intro"><p class="eyebrow">FROM SIGNAL TO ACTION</p><h2>Three priorities for operations leadership.</h2><p>Recommendations translate the dashboard into clear shop-floor actions.</p></div>
+      <div class="insight-list">
+        <article><b>01</b><div><h3>Stabilise night-shift quality</h3><p>Add first-piece inspection and targeted operator coaching where night-shift defects exceed the portfolio average.</p></div></article>
+        <article><b>02</b><div><h3>Attack the downtime Pareto</h3><p>Focus preventive maintenance on bottom-quartile lines and recurring yarn-break events.</p></div></article>
+        <article><b>03</b><div><h3>Protect delivery reliability</h3><p>Flag runs below 88% efficiency or above 70 minutes downtime before they affect customers.</p></div></article>
       </div>
     </section>
 
-    <section id="method" class="method"><div><p class="eyebrow">ANALYTICS WORKFLOW</p><h2>Built like a real business project</h2></div><div class="steps"><span>01 Data generation</span><span>02 Python cleaning & EDA</span><span>03 SQL analysis</span><span>04 Excel reporting</span><span>05 Tableau-ready model</span><span>06 Web dashboard</span></div></section>
+    <section id="method" class="method"><div><p class="eyebrow">PROJECT ARCHITECTURE</p><h2>One dataset.<br>Six analytical layers.</h2></div><div class="steps"><span><b>01</b> Synthetic operations data</span><span><b>02</b> Python cleaning & EDA</span><span><b>03</b> SQL business analysis</span><span><b>04</b> Excel KPI reporting</span><span><b>05</b> Tableau-ready model</span><span><b>06</b> Responsive web delivery</span></div></section>
   </main>
-  <footer><p>Textile Operations Analytics • Portfolio project by Mohd Atif</p><a href="https://github.com/Codewith-Atif" target="_blank" rel="noreferrer">GitHub ↗</a></footer>
+  <footer><div class="brand-foot">WM</div><p>Textile Operations Intelligence<br><span>Portfolio project by Mohd Atif</span></p><a href="https://github.com/Codewith-Atif" target="_blank" rel="noreferrer">View GitHub ↗</a></footer>
 </body>
 </html>
