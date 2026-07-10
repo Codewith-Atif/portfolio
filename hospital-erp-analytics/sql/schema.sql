@@ -1,0 +1,7 @@
+CREATE TABLE departments (department_id INTEGER PRIMARY KEY, department_name VARCHAR(80) UNIQUE NOT NULL, bed_capacity INTEGER NOT NULL CHECK (bed_capacity >= 0));
+CREATE TABLE patients (patient_id VARCHAR(20) PRIMARY KEY, birth_year SMALLINT, gender VARCHAR(20), city VARCHAR(80));
+CREATE TABLE encounters (encounter_id VARCHAR(20) PRIMARY KEY, patient_id VARCHAR(20) NOT NULL REFERENCES patients(patient_id), department_id INTEGER NOT NULL REFERENCES departments(department_id), admit_date DATE NOT NULL, discharge_date DATE, encounter_type VARCHAR(20) NOT NULL, wait_minutes INTEGER CHECK (wait_minutes >= 0), bed_days INTEGER DEFAULT 0 CHECK (bed_days >= 0), readmitted_30d BOOLEAN DEFAULT FALSE);
+CREATE TABLE appointments (appointment_id VARCHAR(20) PRIMARY KEY, patient_id VARCHAR(20) REFERENCES patients(patient_id), department_id INTEGER REFERENCES departments(department_id), scheduled_at TIMESTAMP NOT NULL, status VARCHAR(20) NOT NULL CHECK (status IN ('Scheduled','Completed','Cancelled','No-show')));
+CREATE TABLE billing (invoice_id VARCHAR(20) PRIMARY KEY, encounter_id VARCHAR(20) UNIQUE REFERENCES encounters(encounter_id), billed_amount DECIMAL(12,2) NOT NULL CHECK (billed_amount >= 0), collected_amount DECIMAL(12,2) NOT NULL CHECK (collected_amount >= 0), payment_status VARCHAR(20));
+CREATE INDEX idx_encounters_admit_date ON encounters(admit_date);
+CREATE INDEX idx_encounters_department ON encounters(department_id);

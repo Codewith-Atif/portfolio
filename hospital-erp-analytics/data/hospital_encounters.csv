@@ -1,0 +1,31 @@
+encounter_id,patient_id,admit_date,discharge_date,department,encounter_type,appointment_status,wait_minutes,bed_days,billed_amount,collected_amount,readmitted_30d
+E1001,P001,2026-01-04,2026-01-08,Cardiology,Inpatient,Completed,21,4,72000,69000,0
+E1002,P002,2026-01-09,2026-01-09,Emergency,Emergency,Completed,12,0,18500,18000,0
+E1003,P003,2026-01-15,2026-01-15,Pediatrics,Outpatient,Completed,18,0,6200,6200,0
+E1004,P004,2026-01-22,2026-01-25,Orthopedics,Inpatient,Completed,27,3,58000,51000,0
+E1005,P005,2026-02-02,2026-02-02,General Medicine,Outpatient,Completed,33,0,5400,5000,1
+E1006,P006,2026-02-08,2026-02-13,Neurology,Inpatient,Completed,25,5,86000,78000,1
+E1007,P007,2026-02-17,2026-02-17,Cardiology,Outpatient,Completed,20,0,11000,11000,0
+E1008,P008,2026-02-24,2026-02-24,Emergency,Emergency,Completed,15,0,22400,21000,0
+E1009,P009,2026-03-03,2026-03-03,Pediatrics,Outpatient,Scheduled,17,0,0,0,0
+E1010,P010,2026-03-07,2026-03-11,Cardiology,Inpatient,Completed,23,4,76000,72000,0
+E1011,P011,2026-03-13,2026-03-13,General Medicine,Outpatient,Cancelled,35,0,0,0,0
+E1012,P012,2026-03-20,2026-03-22,Orthopedics,Inpatient,Completed,29,2,46000,43000,0
+E1013,P013,2026-03-27,2026-03-27,Neurology,Outpatient,No-show,26,0,0,0,0
+E1014,P014,2026-04-02,2026-04-02,Emergency,Emergency,Completed,13,0,19800,19000,0
+E1015,P015,2026-04-06,2026-04-09,General Medicine,Inpatient,Completed,30,3,42000,38000,1
+E1016,P016,2026-04-12,2026-04-12,Pediatrics,Outpatient,Completed,19,0,6800,6800,0
+E1017,P017,2026-04-19,2026-04-24,Neurology,Inpatient,Completed,28,5,91000,82000,0
+E1018,P018,2026-04-27,2026-04-27,Cardiology,Outpatient,Completed,22,0,12500,12000,0
+E1019,P019,2026-05-03,2026-05-06,Orthopedics,Inpatient,Completed,31,3,61000,56000,1
+E1020,P020,2026-05-08,2026-05-08,General Medicine,Outpatient,Completed,34,0,5900,5500,0
+E1021,P021,2026-05-12,2026-05-12,Emergency,Emergency,Completed,14,0,20500,20000,0
+E1022,P022,2026-05-17,2026-05-17,Pediatrics,Outpatient,Completed,20,0,7200,7000,0
+E1023,P023,2026-05-21,2026-05-26,Neurology,Inpatient,Completed,27,5,94000,86000,1
+E1024,P024,2026-05-29,2026-05-29,Cardiology,Outpatient,Scheduled,21,0,0,0,0
+E1025,P025,2026-06-01,2026-06-04,General Medicine,Inpatient,Completed,32,3,45500,42000,0
+E1026,P026,2026-06-05,2026-06-05,Emergency,Emergency,Completed,11,0,24800,24000,0
+E1027,P027,2026-06-09,2026-06-12,Orthopedics,Inpatient,Completed,26,3,63500,60000,0
+E1028,P028,2026-06-14,2026-06-14,Pediatrics,Outpatient,Cancelled,18,0,0,0,0
+E1029,P029,2026-06-19,2026-06-23,Cardiology,Inpatient,Completed,24,4,81000,76000,1
+E1030,P030,2026-06-25,2026-06-25,General Medicine,Outpatient,Completed,36,0,6100,5700,0
