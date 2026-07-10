@@ -44,7 +44,7 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.12 });
 
-document.querySelectorAll(".stat, .skill-card, .project-card, .timeline-item, .contact-card").forEach((el, index) => {
+document.querySelectorAll(".stat, .skill-card, .project-card, .education-card, .timeline-item, .contact-card").forEach((el, index) => {
   el.classList.add("reveal");
   el.style.setProperty("--delay", `${Math.min(index % 6, 5) * 70}ms`);
   observer.observe(el);
