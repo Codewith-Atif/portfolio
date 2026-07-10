@@ -1,55 +1,53 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const $ = id => document.getElementById(id);
-  const format = n => new Intl.NumberFormat('en-IN', {notation:'compact', maximumFractionDigits:2}).format(n);
+  const num = v => Number(v) || 0;
+  const format = n => new Intl.NumberFormat('en-IN',{notation:'compact',maximumFractionDigits:2}).format(n);
+  let rows = [];
 
-  $('productionKpi').textContent = '1.36M';
-  $('efficiencyKpi').textContent = '91.4%';
-  $('defectKpi').textContent = '3.3%';
-  $('wasteKpi').textContent = '3.9%';
-  $('otdKpi').textContent = '92.2%';
-  $('recordCount').textContent = 'Showing 1,500 production records';
-
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const actual = [109750,123714,97916,113699,89826,131789,122207,111191,107980,124075,102404,125187];
-  const target = [119210,134005,108154,123644,98442,144054,132952,121763,119344,135897,112678,137677];
-
-  function svgBox(id, inner, height=270) {
-    const old = $(id);
-    const box = document.createElement('div');
-    box.style.height = height + 'px';
-    box.style.width = '100%';
-    box.innerHTML = `<svg viewBox="0 0 900 ${height}" width="100%" height="100%" role="img" aria-label="Analytics chart">${inner}</svg>`;
-    old.replaceWith(box);
+  function sum(data,key){return data.reduce((a,r)=>a+num(r[key]),0)}
+  function group(data,key,value){return data.reduce((o,r)=>{o[r[key]]=(o[r[key]]||0)+num(r[value]);return o},{})}
+  function svgBox(id,inner,height=270){
+    const old=$(id),box=document.createElement('div'); box.id=id; box.style.cssText=`height:${height}px;width:100%`;
+    box.innerHTML=`<svg viewBox="0 0 900 ${height}" width="100%" height="100%" role="img"><g>${inner}</g></svg>`; old.replaceWith(box);
   }
-  function grid(w,h,pad) {
-    let s='';
-    for(let i=0;i<5;i++){const y=pad+i*(h-pad*2)/4;s+=`<line x1="${pad}" y1="${y}" x2="${w-pad}" y2="${y}" stroke="#e5ebe7"/>`;}
-    return s;
+  function grid(w,h,p){let s='';for(let i=0;i<5;i++){const y=p+i*(h-p*2)/4;s+=`<line x1="${p}" y1="${y}" x2="${w-p}" y2="${y}" stroke="#e5ebe7"/>`}return s}
+  function bars(id,labels,values,suffix=''){
+    const w=900,h=270,p=42,max=Math.max(...values,1)*1.14,slot=(w-p*2)/values.length,bw=Math.min(55,slot*.58);let s=grid(w,h,p);
+    values.forEach((v,i)=>{const x=p+i*slot+(slot-bw)/2,bh=v/max*(h-p*2),y=h-p-bh;
+      s+=`<rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="5" fill="#0b7057"/><text x="${x+bw/2}" y="${Math.max(13,y-7)}" text-anchor="middle" font-size="10" fill="#10211d">${suffix?v.toFixed(1)+suffix:format(v)}</text><text x="${x+bw/2}" y="${h-11}" text-anchor="middle" font-size="9" fill="#61706b">${labels[i].replace(' Variation',' Var.')}</text>`;
+    }); svgBox(id,s);
   }
-  function points(values,w,h,pad,max) {
-    return values.map((v,i)=>`${pad+i*(w-pad*2)/(values.length-1)},${h-pad-(v/max)*(h-pad*2)}`).join(' ');
+  function lineChart(labels,a,t){
+    const w=900,h=270,p=40,max=Math.max(...a,...t,1)*1.08;
+    const pts=v=>v.map((n,i)=>`${p+i*(w-p*2)/(v.length-1)},${h-p-n/max*(h-p*2)}`).join(' ');
+    let s=grid(w,h,p)+`<polyline fill="none" stroke="#9bad9f" stroke-width="3" stroke-dasharray="7 6" points="${pts(t)}"/><polyline fill="none" stroke="#0b7057" stroke-width="4" points="${pts(a)}"/>`;
+    a.forEach((v,i)=>{const x=p+i*(w-p*2)/(a.length-1),y=h-p-v/max*(h-p*2);s+=`<circle cx="${x}" cy="${y}" r="4" fill="#0b7057"/><text x="${x}" y="${h-10}" text-anchor="middle" font-size="10" fill="#61706b">${labels[i]}</text>`});
+    s+=`<text x="680" y="17" font-size="11" fill="#0b7057">● Actual</text><text x="760" y="17" font-size="11" fill="#61706b">-- Target</text>`;svgBox('trendChart',s);
   }
-  const W=900,H=270,P=38,maxMonth=155000;
-  let trend=grid(W,H,P);
-  trend+=`<polyline fill="none" stroke="#9bad9f" stroke-width="3" stroke-dasharray="7 6" points="${points(target,W,H,P,maxMonth)}"/>`;
-  trend+=`<polyline fill="none" stroke="#0b7057" stroke-width="4" points="${points(actual,W,H,P,maxMonth)}"/>`;
-  actual.forEach((v,i)=>{const x=P+i*(W-P*2)/11,y=H-P-(v/maxMonth)*(H-P*2);trend+=`<circle cx="${x}" cy="${y}" r="4" fill="#0b7057"/><text x="${x}" y="${H-10}" text-anchor="middle" font-size="11" fill="#61706b">${months[i]}</text>`;});
-  trend+=`<text x="650" y="18" font-size="12" fill="#0b7057">● Actual</text><text x="735" y="18" font-size="12" fill="#61706b">-- Target</text>`;
-  svgBox('trendChart',trend);
-
-  function bars(id, labels, values, suffix='') {
-    const w=900,h=270,p=42,max=Math.max(...values)*1.12,bw=(w-p*2)/values.length*.58;
-    let s=grid(w,h,p);
-    values.forEach((v,i)=>{const slot=(w-p*2)/values.length,x=p+i*slot+(slot-bw)/2,bh=v/max*(h-p*2),y=h-p-bh;
-      s+=`<rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="5" fill="#0b7057"/><text x="${x+bw/2}" y="${y-7}" text-anchor="middle" font-size="11" fill="#10211d">${suffix? v+suffix:format(v)}</text><text x="${x+bw/2}" y="${h-12}" text-anchor="middle" font-size="10" fill="#61706b">${labels[i]}</text>`;
-    });
-    svgBox(id,s);
+  function render(data){
+    if(!data.length)return;
+    const actual=sum(data,'actual_meters'),target=sum(data,'target_meters'),defects=sum(data,'defect_meters');
+    $('productionKpi').textContent=format(actual);$('efficiencyKpi').textContent=(100*actual/target).toFixed(1)+'%';
+    $('defectKpi').textContent=(100*defects/actual).toFixed(1)+'%';$('wasteKpi').textContent=(100*sum(data,'waste_kg')/sum(data,'material_issued_kg')).toFixed(1)+'%';
+    $('otdKpi').textContent=(100*data.filter(r=>r.delivery_status==='On Time').length/data.length).toFixed(1)+'%';
+    $('recordCount').textContent=`Showing ${data.length.toLocaleString('en-IN')} production records`;
+    const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],ma=group(data,'month','actual_meters'),mt=group(data,'month','target_meters');
+    lineChart(months,months.map(m=>ma[m]||0),months.map(m=>mt[m]||0));
+    const plants=group(data,'plant','actual_meters');bars('plantChart',Object.keys(plants),Object.values(plants));
+    const defectsBy=Object.entries(group(data,'defect_type','defect_meters')).sort((a,b)=>b[1]-a[1]);bars('defectChart',defectsBy.map(x=>x[0]),defectsBy.map(x=>x[1]));
+    const la=group(data,'production_line','actual_meters'),lt=group(data,'production_line','target_meters'),lines=Object.keys(la).sort();bars('lineChart',lines.map(x=>x.replace('-L0','-')),lines.map(x=>100*la[x]/lt[x]),'%');
   }
-  bars('plantChart',['Delhi NCR','Jaipur','Ludhiana','Surat'],[381266,280580,281243,416649]);
-  bars('defectChart',['Weaving','Yarn Break','Shade Var.','Stain','Finishing'],[12377,10092,8554,7265,6933]);
-  bars('lineChart',['DE-1','DE-2','DE-3','JA-1','JA-2','JA-3','LU-1','LU-2','LU-3','SU-1','SU-2','SU-3'],[90.9,91.2,91.9,91.8,91.6,91.0,91.3,90.9,91.4,91.3,91.3,91.8],'%');
-
-  document.querySelectorAll('.filters select').forEach(select => select.disabled = true);
-  $('resetFilters').textContent = '2025 Summary';
-  $('resetFilters').disabled = true;
+  function fill(id,key){[...new Set(rows.map(r=>r[key]))].sort().forEach(v=>$(id).insertAdjacentHTML('beforeend',`<option value="${v}">${v}</option>`))}
+  function apply(){const p=$('plantFilter').value,f=$('fabricFilter').value,s=$('shiftFilter').value;render(rows.filter(r=>(p==='All'||r.plant===p)&&(f==='All'||r.fabric_type===f)&&(s==='All'||r.shift===s)))}
+  try{
+    const response=await fetch(new URL('data/textile_production_data.csv',document.baseURI),{cache:'no-store'});
+    if(!response.ok)throw new Error('Data unavailable');
+    const text=await response.text(),[head,...lines]=text.trim().split(/\r?\n/),keys=head.split(',');
+    rows=lines.map(line=>{const v=line.split(',');return Object.fromEntries(keys.map((k,i)=>[k,v[i]]))});
+    fill('plantFilter','plant');fill('fabricFilter','fabric_type');fill('shiftFilter','shift');
+    ['plantFilter','fabricFilter','shiftFilter'].forEach(id=>$(id).addEventListener('change',apply));
+    $('resetFilters').textContent='Reset filters';$('resetFilters').disabled=false;
+    $('resetFilters').addEventListener('click',()=>{['plantFilter','fabricFilter','shiftFilter'].forEach(id=>$(id).value='All');apply()});
+    render(rows);
+  }catch(e){$('recordCount').textContent='2025 portfolio summary';}
 });
