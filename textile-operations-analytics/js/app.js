@@ -1,5 +1,19 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const $ = id => document.getElementById(id);
+  const root = document.documentElement;
+  const savedTheme = localStorage.getItem('textile-theme');
+  const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const setTheme = theme => {
+    root.dataset.theme = theme;
+    $('themeIcon').textContent = theme === 'dark' ? '☀' : '☾';
+    const label = document.querySelector('.theme-label');
+    if(label) label.textContent = theme === 'dark' ? 'Light' : 'Dark';
+  };
+  setTheme(savedTheme || (preferredDark ? 'dark' : 'light'));
+  $('themeToggle').addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    setTheme(next); localStorage.setItem('textile-theme', next);
+  });
   const num = v => Number(v) || 0;
   const format = n => new Intl.NumberFormat('en-IN',{notation:'compact',maximumFractionDigits:2}).format(n);
   let rows = [];
@@ -10,19 +24,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     const old=$(id),box=document.createElement('div'); box.id=id; box.style.cssText=`height:${height}px;width:100%`;
     box.innerHTML=`<svg viewBox="0 0 900 ${height}" width="100%" height="100%" role="img"><g>${inner}</g></svg>`; old.replaceWith(box);
   }
-  function grid(w,h,p){let s='';for(let i=0;i<5;i++){const y=p+i*(h-p*2)/4;s+=`<line x1="${p}" y1="${y}" x2="${w-p}" y2="${y}" stroke="#e5ebe7"/>`}return s}
+  function grid(w,h,p){let s='';for(let i=0;i<5;i++){const y=p+i*(h-p*2)/4;s+=`<line x1="${p}" y1="${y}" x2="${w-p}" y2="${y}" stroke="var(--chart-grid)"/>`}return s}
   function bars(id,labels,values,suffix=''){
     const w=900,h=270,p=42,max=Math.max(...values,1)*1.14,slot=(w-p*2)/values.length,bw=Math.min(55,slot*.58);let s=grid(w,h,p);
     values.forEach((v,i)=>{const x=p+i*slot+(slot-bw)/2,bh=v/max*(h-p*2),y=h-p-bh;
-      s+=`<rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="5" fill="#0b7057"/><text x="${x+bw/2}" y="${Math.max(13,y-7)}" text-anchor="middle" font-size="10" fill="#10211d">${suffix?v.toFixed(1)+suffix:format(v)}</text><text x="${x+bw/2}" y="${h-11}" text-anchor="middle" font-size="9" fill="#61706b">${labels[i].replace(' Variation',' Var.')}</text>`;
+      s+=`<rect x="${x}" y="${y}" width="${bw}" height="${bh}" rx="3" fill="var(--accent)"/><text x="${x+bw/2}" y="${Math.max(13,y-7)}" text-anchor="middle" font-size="10" fill="var(--text)">${suffix?v.toFixed(1)+suffix:format(v)}</text><text x="${x+bw/2}" y="${h-11}" text-anchor="middle" font-size="9" fill="var(--chart-text)">${labels[i].replace(' Variation',' Var.')}</text>`;
     }); svgBox(id,s);
   }
   function lineChart(labels,a,t){
     const w=900,h=270,p=40,max=Math.max(...a,...t,1)*1.08;
     const pts=v=>v.map((n,i)=>`${p+i*(w-p*2)/(v.length-1)},${h-p-n/max*(h-p*2)}`).join(' ');
-    let s=grid(w,h,p)+`<polyline fill="none" stroke="#9bad9f" stroke-width="3" stroke-dasharray="7 6" points="${pts(t)}"/><polyline fill="none" stroke="#0b7057" stroke-width="4" points="${pts(a)}"/>`;
-    a.forEach((v,i)=>{const x=p+i*(w-p*2)/(a.length-1),y=h-p-v/max*(h-p*2);s+=`<circle cx="${x}" cy="${y}" r="4" fill="#0b7057"/><text x="${x}" y="${h-10}" text-anchor="middle" font-size="10" fill="#61706b">${labels[i]}</text>`});
-    s+=`<text x="680" y="17" font-size="11" fill="#0b7057">● Actual</text><text x="760" y="17" font-size="11" fill="#61706b">-- Target</text>`;svgBox('trendChart',s);
+    let s=grid(w,h,p)+`<polyline fill="none" stroke="var(--chart-text)" stroke-width="3" stroke-dasharray="7 6" points="${pts(t)}"/><polyline fill="none" stroke="var(--accent)" stroke-width="4" points="${pts(a)}"/>`;
+    a.forEach((v,i)=>{const x=p+i*(w-p*2)/(a.length-1),y=h-p-v/max*(h-p*2);s+=`<circle cx="${x}" cy="${y}" r="4" fill="var(--accent)"/><text x="${x}" y="${h-10}" text-anchor="middle" font-size="10" fill="var(--chart-text)">${labels[i]}</text>`});
+    s+=`<text x="680" y="17" font-size="11" fill="var(--accent)">● Actual</text><text x="760" y="17" font-size="11" fill="var(--chart-text)">-- Target</text>`;svgBox('trendChart',s);
   }
   function render(data){
     if(!data.length)return;
@@ -46,7 +60,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     rows=lines.map(line=>{const v=line.split(',');return Object.fromEntries(keys.map((k,i)=>[k,v[i]]))});
     fill('plantFilter','plant');fill('fabricFilter','fabric_type');fill('shiftFilter','shift');
     ['plantFilter','fabricFilter','shiftFilter'].forEach(id=>$(id).addEventListener('change',apply));
-    $('resetFilters').textContent='Reset filters';$('resetFilters').disabled=false;
     $('resetFilters').addEventListener('click',()=>{['plantFilter','fabricFilter','shiftFilter'].forEach(id=>$(id).value='All');apply()});
     render(rows);
   }catch(e){$('recordCount').textContent='2025 portfolio summary';}
