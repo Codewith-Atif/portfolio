@@ -1,0 +1,9 @@
+{
+  "records": 1500,
+  "production_meters": 1359737.5,
+  "efficiency_pct": 91.39,
+  "defect_rate_pct": 3.33,
+  "waste_rate_pct": 3.85,
+  "on_time_pct": 92.2,
+  "order_value_inr": 186367252.7
+}
