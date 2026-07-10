@@ -1,0 +1,10 @@
+{
+  "tickets": 1500,
+  "closed": 1249,
+  "open": 251,
+  "sla_rate": 90.5,
+  "first_contact_rate": 64.6,
+  "avg_resolution_hours": 21.7,
+  "avg_csat": 4.16,
+  "reopen_rate": 9.4
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "query_type": "Fee & Payment",
+    "tickets": 224,
+    "sla_rate": 92.4,
+    "avg_resolution_hours": 21.3,
+    "avg_csat": 4.23
+  },
+  {
+    "query_type": "Examination",
+    "tickets": 197,
+    "sla_rate": 91.9,
+    "avg_resolution_hours": 21.5,
+    "avg_csat": 4.09
+  },
+  {
+    "query_type": "Portal Access",
+    "tickets": 162,
+    "sla_rate": 88.3,
+    "avg_resolution_hours": 21.8,
+    "avg_csat": 4.12
+  },
+  {
+    "query_type": "Results",
+    "tickets": 156,
+    "sla_rate": 89.7,
+    "avg_resolution_hours": 22.6,
+    "avg_csat": 4.22
+  },
+  {
+    "query_type": "Enrollment",
+    "tickets": 151,
+    "sla_rate": 89.4,
+    "avg_resolution_hours": 21.4,
+    "avg_csat": 4.13
+  },
+  {
+    "query_type": "Document Update",
+    "tickets": 138,
+    "sla_rate": 90.6,
+    "avg_resolution_hours": 21.9,
+    "avg_csat": 4.11
+  },
+  {
+    "query_type": "Scholarship",
+    "tickets": 120,
+    "sla_rate": 90.0,
+    "avg_resolution_hours": 22.4,
+    "avg_csat": 4.26
+  },
+  {
+    "query_type": "Timetable",
+    "tickets": 101,
+    "sla_rate": 90.1,
+    "avg_resolution_hours": 20.2,
+    "avg_csat": 4.11
+  }
+]
