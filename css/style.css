@@ -860,6 +860,13 @@ backdrop-filter:blur(14px);
 .timeline-item:nth-child(odd)::after{right:-6px}.timeline-item:nth-child(even)::after{left:-7px}
 .timeline-content h3{color:var(--accent)}.timeline-content h4,.experience-list{color:var(--muted)}.experience-meta{color:var(--accent-3)}
 .contact-card a{color:var(--text)}
+.contact-grid{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px}
+.contact-card{padding:28px 20px}
+.contact-icon{width:48px;height:48px;margin:0 auto 16px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(135deg,rgba(39,194,255,.13),rgba(124,92,255,.14));border:1px solid rgba(39,194,255,.18);color:var(--accent);font-size:20px;transition:.3s}
+.contact-card:hover .contact-icon{transform:translateY(-3px) rotate(-4deg);border-color:var(--accent)}
+.whatsapp-card .contact-icon{color:#25d366;background:rgba(37,211,102,.09);border-color:rgba(37,211,102,.2)}
+.whatsapp-card:hover{border-color:rgba(37,211,102,.42)}
+.contact-card p{margin:0}.contact-card h3{font-size:18px;margin-bottom:9px}
 footer{background:var(--bg-soft);border-top:1px solid var(--line);color:var(--muted)}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease var(--delay),transform .65s ease var(--delay)}
