@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Interactive airport operations and passenger-flow analytics dashboard by Mohd Atif">
+  <title>Airport Analytics Dashboard | Mohd Atif</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span>✈</span><div>Airport Analytics<small>Operations Command Center</small></div></a>
+    <nav><a class="active" href="#overview">Overview</a><a href="#operations">Operations</a><a href="#passengers">Passenger Flow</a><a href="#airlines">Airlines</a><a href="#insights">Insights</a></nav>
+    <div class="side-note"><strong>Portfolio Project</strong><p>Python · SQL · Excel<br>Tableau · Power BI</p><a href="https://github.com/Codewith-Atif/portfolio/tree/main/airport-analytics-dashboard" target="_blank" rel="noopener">View source ↗</a></div>
+  </aside>
+  <main>
+    <header><div><p class="eyebrow">EXECUTIVE ANALYTICS</p><h1>Airport Performance Overview</h1><p class="subtitle">Operational reliability and passenger-flow intelligence</p></div><div class="header-actions"><span class="status"><i></i> Data refreshed</span><button id="exportBtn">Export filtered CSV</button></div></header>
+    <section class="filters" aria-label="Dashboard filters">
+      <label>From<input id="dateFrom" type="date"></label><label>To<input id="dateTo" type="date"></label>
+      <label>Terminal<select id="terminalFilter"><option value="All">All terminals</option></select></label>
+      <label>Airline<select id="airlineFilter"><option value="All">All airlines</option></select></label>
+      <button id="resetBtn" class="reset">Reset filters</button>
+    </section>
+    <div id="loading" class="loading">Loading operational data…</div>
+    <div id="dashboard" hidden>
+      <section id="overview" class="kpis"></section>
+      <section id="operations" class="grid two">
+        <article class="panel wide"><div class="panel-head"><div><p class="eyebrow">DEMAND TREND</p><h2>Daily passengers</h2></div><span id="trendChange" class="pill"></span></div><canvas id="trendChart" height="260"></canvas></article>
+        <article class="panel"><div class="panel-head"><div><p class="eyebrow">ROOT CAUSE</p><h2>Delay contribution</h2></div></div><div id="delayChart" class="bars"></div></article>
+      </section>
+      <section id="passengers" class="grid two">
+        <article class="panel"><div class="panel-head"><div><p class="eyebrow">CAPACITY</p><h2>Terminal congestion</h2></div></div><div id="terminalChart" class="terminal-list"></div></article>
+        <article class="panel wide"><div class="panel-head"><div><p class="eyebrow">STAFFING SIGNAL</p><h2>Passenger volume by hour</h2></div></div><div id="heatmap" class="heatmap"></div></article>
+      </section>
+      <section id="airlines" class="panel"><div class="panel-head"><div><p class="eyebrow">BENCHMARK</p><h2>Airline performance</h2></div><span class="muted">Click headers to sort</span></div><div class="table-wrap"><table><thead><tr><th data-sort="airline">Airline</th><th data-sort="flights">Flights</th><th data-sort="passengers">Passengers</th><th data-sort="otp">On-time %</th><th data-sort="avgDelay">Avg delay</th><th data-sort="load">Load factor</th></tr></thead><tbody id="airlineTable"></tbody></table></div></section>
+      <section id="insights" class="panel insights"><div><p class="eyebrow">DECISION SUPPORT</p><h2>Executive insights</h2></div><div id="insightList" class="insight-grid"></div></section>
+      <footer>Built by <strong>Mohd Atif</strong> · Synthetic portfolio dataset · <a href="../index.html">Back to portfolio</a></footer>
+    </div>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>
