@@ -971,3 +971,26 @@ nav ul li a{display:block;padding:11px 13px;border-radius:9px}nav ul li a:hover{
 .project-card>p{flex:1;margin-bottom:22px}
 .project-card .project-actions{margin-top:auto}
 @media(max-width:900px){.project-grid{grid-auto-rows:auto}.project-card{min-height:0}.project-card h3,.project-card .project-tags{min-height:0}}
+
+
+/* Prevent long contact details from overflowing cards */
+.contact-card{
+  min-width:0;
+  overflow:hidden;
+}
+.contact-card p{
+  width:100%;
+  min-width:0;
+}
+.contact-card a{
+  display:inline-block;
+  max-width:100%;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  hyphens:auto;
+  line-height:1.55;
+  font-size:clamp(12px,1.05vw,14px);
+}
+@media(max-width:620px){
+  .contact-card a{font-size:13px}
+}
