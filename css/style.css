@@ -961,3 +961,13 @@ nav ul li a{display:block;padding:11px 13px;border-radius:9px}nav ul li a:hover{
   .project-card{min-height:0}
   .project-card h3,.project-card .project-tags{min-height:0}
 }
+
+
+/* Uniform text-only project cards */
+.project-grid{grid-auto-rows:1fr;align-items:stretch}
+.project-card{height:100%;min-height:455px;display:flex;flex-direction:column}
+.project-card h3{min-height:62px;margin-bottom:14px}
+.project-card .project-tags{min-height:76px}
+.project-card>p{flex:1;margin-bottom:22px}
+.project-card .project-actions{margin-top:auto}
+@media(max-width:900px){.project-grid{grid-auto-rows:auto}.project-card{min-height:0}.project-card h3,.project-card .project-tags{min-height:0}}
