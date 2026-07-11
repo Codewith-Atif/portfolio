@@ -1008,3 +1008,21 @@ nav ul li a{display:block;padding:11px 13px;border-radius:9px}nav ul li a:hover{
   .contact-grid{grid-template-columns:1fr}
   .contact-card a{font-size:13px}
 }
+
+
+/* Definitive single-line contact labels */
+#contact .contact-card a{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  white-space:nowrap!important;
+  overflow-wrap:normal!important;
+  word-break:keep-all!important;
+  hyphens:none!important;
+  font-size:10px!important;
+  letter-spacing:-.25px;
+  text-align:center;
+}
+@media(max-width:900px){
+  #contact .contact-card a{font-size:13px!important;letter-spacing:0}
+}
