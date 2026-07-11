@@ -4,20 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Interactive airport operations and passenger-flow analytics dashboard by Mohd Atif">
+  <meta name="theme-color" content="#171022">
   <title>Airport Analytics Dashboard | Mohd Atif</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/theme.css">
 </head>
 <body>
-  <aside class="sidebar">
+  <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <aside class="sidebar" id="sidebar">
     <a class="brand" href="../index.html"><span>✈</span><div>Airport Analytics<small>Operations Command Center</small></div></a>
     <nav><a class="active" href="#overview">Overview</a><a href="#operations">Operations</a><a href="#passengers">Passenger Flow</a><a href="#airlines">Airlines</a><a href="#insights">Insights</a></nav>
     <div class="side-note"><strong>Portfolio Project</strong><p>Python · SQL · Excel<br>Tableau · Power BI</p><a href="https://github.com/Codewith-Atif/portfolio/tree/main/airport-analytics-dashboard" target="_blank" rel="noopener">View source ↗</a></div>
   </aside>
   <main>
-    <header><div><p class="eyebrow">EXECUTIVE ANALYTICS</p><h1>Airport Performance Overview</h1><p class="subtitle">Operational reliability and passenger-flow intelligence</p></div><div class="header-actions"><span class="status"><i></i> Data refreshed</span><button id="exportBtn">Export filtered CSV</button></div></header>
+    <header><div><p class="eyebrow">EXECUTIVE ANALYTICS</p><h1>Airport Performance Overview</h1><p class="subtitle">Operational reliability and passenger-flow intelligence</p></div><div class="header-actions"><span class="status"><i></i> Data refreshed</span><button class="theme-toggle" id="themeToggle" aria-label="Switch color theme"><span id="themeIcon">☀</span><span id="themeLabel">Light mode</span></button><button id="exportBtn">Export filtered CSV</button></div></header>
     <section class="filters" aria-label="Dashboard filters">
       <label>From<input id="dateFrom" type="date"></label><label>To<input id="dateTo" type="date"></label>
       <label>Terminal<select id="terminalFilter"><option value="All">All terminals</option></select></label>
@@ -41,5 +45,6 @@
     </div>
   </main>
   <script src="js/app.js"></script>
+  <script src="js/enhancements.js"></script>
 </body>
 </html>
