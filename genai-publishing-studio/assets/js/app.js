@@ -20,6 +20,7 @@ fetch('data/dashboard_metrics.json').then(r=>r.json()).then(d=>{const vals=[d.as
 const seriesDialog=document.querySelector('#seriesDialog'),seriesImage=document.querySelector('#seriesFullImage'),seriesCaption=document.querySelector('#seriesCaption');
 document.querySelectorAll('.story-frame').forEach(frame=>frame.addEventListener('click',()=>{seriesImage.src=frame.dataset.full;seriesImage.alt=frame.querySelector('img').alt;seriesCaption.textContent=frame.dataset.caption;seriesDialog.showModal()}));
 document.querySelectorAll('.character-shot').forEach(shot=>shot.addEventListener('click',()=>{seriesImage.src=shot.dataset.full;seriesImage.alt=shot.querySelector('img').alt;seriesCaption.textContent=shot.dataset.caption;seriesDialog.showModal()}));
+document.querySelectorAll('.color-variant').forEach(variant=>variant.addEventListener('click',()=>{seriesImage.src=variant.dataset.full;seriesImage.alt=variant.querySelector('img').alt;seriesCaption.textContent=variant.dataset.caption;seriesDialog.showModal()}));
 document.querySelector('.series-close')?.addEventListener('click',()=>seriesDialog.close());
 seriesDialog?.addEventListener('click',e=>{if(e.target===seriesDialog)seriesDialog.close()});
 document.querySelector('.copy-prompt')?.addEventListener('click',async e=>{const text=document.querySelector(`#${e.currentTarget.dataset.copyTarget}`).textContent.trim();await navigator.clipboard.writeText(text);const old=e.currentTarget.textContent;e.currentTarget.textContent='Prompt copied ✓';setTimeout(()=>e.currentTarget.textContent=old,1800)});
