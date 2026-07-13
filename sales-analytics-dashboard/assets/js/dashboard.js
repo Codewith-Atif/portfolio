@@ -1,4 +1,32 @@
 let salesData = [];
+const root = document.documentElement;
+const themeToggle = document.getElementById('themeToggle');
+const themeLabel = document.getElementById('themeLabel');
+const themeIcon = themeToggle.querySelector('.theme-icon');
+const dashboardStatus = document.getElementById('dashboardStatus');
+
+function preferredTheme(){
+  const saved = localStorage.getItem('sales-dashboard-theme');
+  if (saved === 'light' || saved === 'dark') return saved;
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+
+function applyTheme(theme, redraw = false){
+  root.dataset.theme = theme;
+  const isDark = theme === 'dark';
+  themeLabel.textContent = isDark ? 'Light mode' : 'Dark mode';
+  themeIcon.textContent = isDark ? '☀' : '☾';
+  themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} theme`);
+  themeToggle.setAttribute('aria-pressed', String(!isDark));
+  if (redraw && salesData.length) plotCharts(filtered());
+}
+
+applyTheme(preferredTheme());
+themeToggle.addEventListener('click', () => {
+  const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('sales-dashboard-theme', next);
+  applyTheme(next, true);
+});
 
 const money = n => '$' + Math.round(n || 0).toLocaleString();
 const pct = n => ((n || 0) * 100).toFixed(1) + '%';
@@ -76,28 +104,20 @@ function updateKPIs(data){
   document.getElementById('marginKpi').textContent = pct(margin);
 }
 
-const layoutBase = {
-  paper_bgcolor: 'rgba(0,0,0,0)',
-  plot_bgcolor: 'rgba(0,0,0,0)',
-  font: {
-    color: '#E5EEF9',
-    family: 'Poppins'
-  },
-  margin: {
-    t: 20,
-    l: 60,
-    r: 30,
-    b: 60
-  },
-  xaxis: {
-    gridcolor: 'rgba(148,163,184,.15)',
-    zerolinecolor: 'rgba(148,163,184,.15)'
-  },
-  yaxis: {
-    gridcolor: 'rgba(148,163,184,.15)',
-    zerolinecolor: 'rgba(148,163,184,.15)'
-  }
-};
+function chartTheme(){
+  const styles = getComputedStyle(root);
+  const grid = styles.getPropertyValue('--grid').trim();
+  return {
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    colorway: ['#2fb8ad', '#7c3aed', '#38bdf8', '#f59e0b', '#f472b6'],
+    font: { color: styles.getPropertyValue('--text').trim(), family: 'Inter, Segoe UI, Arial' },
+    margin: { t: 20, l: 58, r: 24, b: 55 },
+    xaxis: { gridcolor: grid, zerolinecolor: grid, automargin: true },
+    yaxis: { gridcolor: grid, zerolinecolor: grid, automargin: true },
+    hoverlabel: { bgcolor: styles.getPropertyValue('--panel-solid').trim(), bordercolor: styles.getPropertyValue('--line').trim() }
+  };
+}
 
 const config = {
   responsive: true,
@@ -105,6 +125,8 @@ const config = {
 };
 
 function plotCharts(data){
+  const layoutBase = chartTheme();
+  const compact = window.innerWidth < 520;
 
   const monthly = {};
   data.forEach(r => {
@@ -129,7 +151,7 @@ function plotCharts(data){
     hovertemplate: '<b>%{x}</b><br>Revenue: $%{y:,.0f}<extra></extra>'
   }], {
     ...layoutBase,
-    height: 360
+    height: compact ? 300 : 360
   }, config);
 
   const region = groupSum(data, 'region', 'sales');
@@ -141,7 +163,7 @@ function plotCharts(data){
     hovertemplate: '<b>%{x}</b><br>Revenue: $%{y:,.0f}<extra></extra>'
   }], {
     ...layoutBase,
-    height: 330
+    height: compact ? 300 : 330
   }, config);
 
   const category = groupSum(data, 'category', 'profit');
@@ -155,7 +177,7 @@ function plotCharts(data){
     hovertemplate: '<b>%{label}</b><br>Profit: $%{value:,.0f}<extra></extra>'
   }], {
     ...layoutBase,
-    height: 330,
+    height: compact ? 300 : 330,
     showlegend: false
   }, config);
 
@@ -168,7 +190,7 @@ function plotCharts(data){
     hovertemplate: '<b>%{x}</b><br>Revenue: $%{y:,.0f}<extra></extra>'
   }], {
     ...layoutBase,
-    height: 330
+    height: compact ? 300 : 330
   }, config);
 
   const city = groupSum(data, 'city', 'sales');
@@ -186,11 +208,11 @@ function plotCharts(data){
     hovertemplate: '<b>%{y}</b><br>Revenue: $%{x:,.0f}<extra></extra>'
   }], {
     ...layoutBase,
-    height: 330,
+    height: compact ? 300 : 330,
     margin: {
       t: 20,
-      l: 120,
-      r: 30,
+      l: compact ? 82 : 120,
+      r: 20,
       b: 45
     }
   }, config);
@@ -203,13 +225,26 @@ function updateDashboard(){
 }
 
 fetch('data/sales_data.csv')
-  .then(response => response.text())
+  .then(response => {
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return response.text();
+  })
   .then(text => {
     salesData = parseCSV(text);
     fillFilters();
     updateDashboard();
+    dashboardStatus.textContent = '';
   })
   .catch(error => {
     console.error('Dataset loading error:', error);
-    alert('Dataset could not be loaded. Please check data/sales_data.csv file path.');
+    dashboardStatus.textContent = 'Dashboard data could not be loaded. Please refresh or try again later.';
+    dashboardStatus.classList.add('error');
   });
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    if (salesData.length) plotCharts(filtered());
+  }, 180);
+});
