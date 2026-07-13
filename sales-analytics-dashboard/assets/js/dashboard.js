@@ -2,11 +2,11 @@ let salesData = [];
 const root = document.documentElement;
 const themeToggle = document.getElementById('themeToggle');
 const themeLabel = document.getElementById('themeLabel');
-const themeIcon = themeToggle.querySelector('.theme-icon');
 const dashboardStatus = document.getElementById('dashboardStatus');
 
 function preferredTheme(){
-  const saved = localStorage.getItem('sales-dashboard-theme');
+  let saved;
+  try { saved = localStorage.getItem('sales-dashboard-theme'); } catch (error) {}
   if (saved === 'light' || saved === 'dark') return saved;
   return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 }
@@ -14,8 +14,7 @@ function preferredTheme(){
 function applyTheme(theme, redraw = false){
   root.dataset.theme = theme;
   const isDark = theme === 'dark';
-  themeLabel.textContent = isDark ? 'Light mode' : 'Dark mode';
-  themeIcon.textContent = isDark ? '☀' : '☾';
+  themeLabel.textContent = isDark ? 'Light' : 'Dark';
   themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} theme`);
   themeToggle.setAttribute('aria-pressed', String(!isDark));
   if (redraw && salesData.length) plotCharts(filtered());
@@ -24,7 +23,7 @@ function applyTheme(theme, redraw = false){
 applyTheme(preferredTheme());
 themeToggle.addEventListener('click', () => {
   const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-  localStorage.setItem('sales-dashboard-theme', next);
+  try { localStorage.setItem('sales-dashboard-theme', next); } catch (error) {}
   applyTheme(next, true);
 });
 
