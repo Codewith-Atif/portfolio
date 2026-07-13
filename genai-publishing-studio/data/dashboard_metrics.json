@@ -1,0 +1,33 @@
+{
+  "assets": 120,
+  "first_pass_approval": 52.5,
+  "avg_quality": 88.6,
+  "hours_saved": 818.6,
+  "by_modality": [
+    {
+      "modality": "Image",
+      "assets": 19,
+      "quality": 89.1
+    },
+    {
+      "modality": "Video",
+      "assets": 29,
+      "quality": 89.6
+    },
+    {
+      "modality": "Voice",
+      "assets": 22,
+      "quality": 88.7
+    },
+    {
+      "modality": "Animation",
+      "assets": 33,
+      "quality": 88.0
+    },
+    {
+      "modality": "Lecture",
+      "assets": 17,
+      "quality": 87.6
+    }
+  ]
+}
