@@ -1,3 +1,8 @@
+const root=document.documentElement,themeButton=document.querySelector('#themeToggle'),themeMeta=document.querySelector('meta[name="theme-color"]');
+function applyTheme(theme){root.dataset.theme=theme;localStorage.setItem('atif-theme',theme);themeButton?.setAttribute('aria-label',`Switch to ${theme==='dark'?'light':'dark'} theme`);themeMeta?.setAttribute('content',theme==='dark'?'#101116':'#f3f0e9')}
+const savedTheme=localStorage.getItem('atif-theme');applyTheme(savedTheme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+themeButton?.addEventListener('click',()=>applyTheme(root.dataset.theme==='dark'?'light':'dark'));
+
 const projects=[
  {type:'image',title:'Healthy Habits',desc:'Consistent 3D educational illustrations for primary learners.',mark:'01',color:'linear-gradient(145deg,#ff4a7c,#ff9b35)',brief:'Turn textbook concepts into warm, instantly readable scenes without text inside the artwork.',strategy:'Character bible + composition blocks + clean daylight + negative constraints for text, logos and anatomy.',result:'A reusable visual language suitable for chapter-wide production.'},
  {type:'animation',title:'The Magical Paintbrush',desc:'Character-led story world designed for scene-to-scene continuity.',mark:'02',color:'linear-gradient(145deg,#5840ed,#ac74ff)',brief:'Adapt a children’s story into cinematic beats while keeping characters, props and locations stable.',strategy:'Locked character descriptors, environment anchors, shot vocabulary and motion-safe staging.',result:'A coherent scene pack ready for image-to-video animation.'},
