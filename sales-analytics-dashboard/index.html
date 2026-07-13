@@ -10,9 +10,8 @@
 </head>
 
 <body>
-
   <header class="dashboard-header">
-    <div>
+    <div class="header-copy">
       <span class="badge">Portfolio Project • Business Intelligence</span>
       <h1>Sales Analytics Dashboard</h1>
       <p>
@@ -21,19 +20,23 @@
       </p>
     </div>
 
-    <div class="header-actions">
-      <a class="btn" href="data/sales_data.csv" download>Download Dataset</a>
-      <a class="btn secondary" href="sql/sales_analysis_queries.sql" download>SQL Queries</a>
-      <a class="btn secondary" href="README.md">README</a>
-      <a class="btn secondary" href="../index.html">Back to Portfolio</a>
+    <div class="header-actions" aria-label="Dashboard actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☀</span>
+        <span id="themeLabel">Light mode</span>
+      </button>
+      <a class="btn" href="data/sales_data.csv" download>Download data</a>
+      <a class="btn secondary" href="sql/sales_analysis_queries.sql" download>SQL queries</a>
+      <a class="btn secondary" href="README.md">Project notes</a>
+      <a class="btn secondary" href="../index.html">← Portfolio</a>
     </div>
   </header>
 
   <main class="wrap">
 
-    <section class="summary-panel">
+    <section class="summary-panel" aria-labelledby="summaryTitle">
       <div>
-        <h2>Executive Summary</h2>
+        <h2 id="summaryTitle">Executive Summary</h2>
         <p>
           This dashboard tracks sales KPIs across regions, categories and customer
           segments. It helps leadership identify revenue drivers, profit gaps and
@@ -48,30 +51,30 @@
       </div>
     </section>
 
-    <section class="controls">
+    <section class="controls" aria-label="Dashboard filters">
       <div class="control">
-        <label>Region</label>
+        <label for="regionFilter">Region</label>
         <select id="regionFilter">
           <option value="All">All Regions</option>
         </select>
       </div>
 
       <div class="control">
-        <label>Category</label>
+        <label for="categoryFilter">Category</label>
         <select id="categoryFilter">
           <option value="All">All Categories</option>
         </select>
       </div>
 
       <div class="control">
-        <label>Customer Segment</label>
+        <label for="segmentFilter">Customer Segment</label>
         <select id="segmentFilter">
           <option value="All">All Segments</option>
         </select>
       </div>
     </section>
 
-    <section class="grid">
+    <section class="grid" aria-label="Key performance indicators">
       <div class="card">
         <span>Total Revenue</span>
         <strong id="salesKpi">$0</strong>
@@ -103,30 +106,32 @@
       </div>
     </section>
 
-    <section class="charts">
+    <div class="dashboard-status" id="dashboardStatus" role="status" aria-live="polite">Loading dashboard data…</div>
+
+    <section class="charts" aria-label="Sales charts">
       <div class="chart wide">
         <h3>Monthly Sales Trend</h3>
-        <div id="monthlyTrend"></div>
+        <div class="plot" id="monthlyTrend"></div>
       </div>
 
       <div class="chart">
         <h3>Regional Revenue Analysis</h3>
-        <div id="regionChart"></div>
+        <div class="plot" id="regionChart"></div>
       </div>
 
       <div class="chart">
         <h3>Category Performance</h3>
-        <div id="categoryChart"></div>
+        <div class="plot" id="categoryChart"></div>
       </div>
 
       <div class="chart">
         <h3>Customer Segment Analysis</h3>
-        <div id="segmentChart"></div>
+        <div class="plot" id="segmentChart"></div>
       </div>
 
       <div class="chart">
         <h3>Top City Performance</h3>
-        <div id="cityChart"></div>
+        <div class="plot" id="cityChart"></div>
       </div>
     </section>
 
