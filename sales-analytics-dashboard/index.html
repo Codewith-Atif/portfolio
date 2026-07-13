@@ -5,11 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sales Analytics Dashboard | Mohd Atif</title>
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <script>
+    (function () {
+      var saved;
+      try { saved = localStorage.getItem('sales-dashboard-theme'); } catch (error) {}
+      var theme = saved === 'light' || saved === 'dark'
+        ? saved
+        : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css?v=3" />
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 </head>
 
 <body>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+    <span class="toggle-track" aria-hidden="true">
+      <span class="toggle-icon sun">☀</span>
+      <span class="toggle-icon moon">☾</span>
+      <span class="toggle-thumb"></span>
+    </span>
+    <span id="themeLabel">Light</span>
+  </button>
+
   <header class="dashboard-header">
     <div class="header-copy">
       <span class="badge">Portfolio Project • Business Intelligence</span>
@@ -21,10 +40,6 @@
     </div>
 
     <div class="header-actions" aria-label="Dashboard actions">
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
-        <span class="theme-icon" aria-hidden="true">☀</span>
-        <span id="themeLabel">Light mode</span>
-      </button>
       <a class="btn" href="data/sales_data.csv" download>Download data</a>
       <a class="btn secondary" href="sql/sales_analysis_queries.sql" download>SQL queries</a>
       <a class="btn secondary" href="README.md">Project notes</a>
@@ -167,7 +182,7 @@
     Created by Mohd Atif • Data Analytics Portfolio • GitHub Pages Ready
   </footer>
 
-  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/dashboard.js?v=3"></script>
 
 </body>
 </html>
