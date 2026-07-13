@@ -1,0 +1,38 @@
+:root{--surface:#faf8f3;--surface-strong:#fff;--nav-bg:rgba(243,240,233,.94);--theme-shadow:rgba(20,20,20,.08);color-scheme:light}
+html[data-theme="dark"]{--ink:#f5f2eb;--paper:#101116;--orange:#ff704d;--blue:#927cff;--muted:#a8abb3;--line:#30323a;--surface:#181a21;--surface-strong:#15171d;--nav-bg:rgba(16,17,22,.94);--theme-shadow:rgba(0,0,0,.4);color-scheme:dark}
+body,.nav,.case,.analytics,dialog,.close,.theme-toggle,.filters button,.pill,.link,.logo{transition:background-color .25s,color .25s,border-color .25s}
+.nav{background:var(--nav-bg)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.theme-toggle{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;font-size:19px;transition:transform .2s,background-color .25s,color .25s}
+.theme-toggle:hover{transform:rotate(10deg);background:var(--surface-strong)}
+.theme-toggle .sun{display:none}
+html[data-theme="dark"] .theme-toggle .sun{display:inline}
+html[data-theme="dark"] .theme-toggle .moon{display:none}
+.case{background:var(--surface)}
+.case:hover{box-shadow:0 18px 50px var(--theme-shadow)}
+.analytics{background:var(--surface-strong)}
+.bar-track{background:var(--line)}
+dialog{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.close{background:var(--surface-strong);color:var(--ink)}
+html[data-theme="dark"] .process{background:#090a0e}
+html[data-theme="dark"] .about{color:#11131a}
+
+@media(max-width:900px){
+  .nav{padding-left:22px;padding-right:22px}
+  .nav .pill{display:none}
+  .theme-toggle{width:40px;height:40px}
+}
+@media(max-width:600px){
+  h1{font-size:clamp(3rem,15vw,4.6rem)}
+  .hero{padding-top:58px;gap:45px}
+  .actions{align-items:flex-start;flex-direction:column;gap:16px}
+  .proof{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .hero-art{min-height:330px;gap:8px}
+  .tile{padding:15px}
+  .tile strong{font-size:18px}
+  .section{padding-top:78px;padding-bottom:78px}
+  .filters{overflow-x:auto;flex-wrap:nowrap;padding-bottom:5px;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .filters button{white-space:nowrap}
+  .metrics b{font-size:34px}
+}
